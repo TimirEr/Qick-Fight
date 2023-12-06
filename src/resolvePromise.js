@@ -1,3 +1,5 @@
+//COPIED FROM TW 
+
 export default function resolvePromise(prms, promiseState){
 
     promiseState.promise = prms;
@@ -22,5 +24,4 @@ export default function resolvePromise(prms, promiseState){
         prms.then(sucessACB).catch(failureACB)
     }
 
-//vad är egentligen meningen med promise?
 }

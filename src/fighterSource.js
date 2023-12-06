@@ -1,0 +1,5 @@
+//ALL SOM HAR MED ATT TA DATA FRÅN API KMR HÄR OCH SEDAN SKICKAS TILL MODEL.
+
+import { API_KEY } from "./apiConfig";
+
+
