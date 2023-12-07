@@ -4,23 +4,28 @@ import Test from "./testPresenter";
 
 export default observer(
     function ReactRoot(props){
+
         function makeRouter(){
+            {console.log(props)}
             return createHashRouter([
                 {
                     path: "/",
-                    element: <Test/>
+                    element: <Test props={props.model}/>
                 },
             ])
         }
-            return ((
             
+
+            return((
             <div className="root" >
                 <p>LOOOOLL LEAGUE OF LEGENDS !!!!!!!!!!!</p>
-               <RouterProvider router={makeRouter()} />
+                <p>{console.log(props)}</p>
+               <RouterProvider router={makeRouter(props)} />
             </div>
            )
             ) 
         }
  )
-    
+
+
   

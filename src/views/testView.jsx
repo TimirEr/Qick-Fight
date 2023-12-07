@@ -3,8 +3,9 @@
 
 export default function TestView(props){
     return<div>
+        {console.log(props)}
         <p>
-            leagueOfLegend O.o
+            {props.oflegends}
         </p>
     </div>
 }
