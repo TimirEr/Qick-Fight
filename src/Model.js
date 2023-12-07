@@ -9,7 +9,7 @@ export default {
     oflegends: "league",
     testing: "works",
 
-  test(props){
+  testfunction(props){
     return(getFighter("mcgregor")
     .then(data => console.log(data))
     .catch(error => console.error(error)));

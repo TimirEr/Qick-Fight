@@ -9,8 +9,8 @@ function retrieveFighterJSONACB(resp) {
     return resp.json();
 }
 function getFighter(fighter) {
-    const requestURL = BASE_URL + "/api/mma/search/" + encodeURIComponent(fighter);
-
+    const requestURL = BASE_URL + "api/mma/search/" + encodeURIComponent(fighter);
+    console.log(API_KEY);
     const options = {
         method: 'GET',
         headers: {
