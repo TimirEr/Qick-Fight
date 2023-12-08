@@ -6,6 +6,6 @@ export default observer(
 
     function Rank(props){
         const propsfighter = props.props.testfunction();
-        console.log(propsfighter.promisResult);
+        console.log(props);
     return <RankView fighterName={propsfighter}></RankView>
 })
