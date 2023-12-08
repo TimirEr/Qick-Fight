@@ -33,7 +33,7 @@ export default observer(
 
             return((
             <div className="root" >
-               <RouterProvider router={makeRouter(props)} />
+               <RouterProvider router={makeRouter()} />
             </div>
            )
             ) 
