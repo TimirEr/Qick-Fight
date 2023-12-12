@@ -6,10 +6,14 @@ function retrieveFighterJSONACB(resp) {
     if (!resp.ok) {
         throw new Error("Invalid parameter");
     }
+    console.log("searchedWorked5:");
+    console.log(resp); ////////////////
     return resp.json();
 }
 function getFighter(fighter) {
-    const requestURL = BASE_URL + "api/mma/search/" + encodeURIComponent(fighter);
+    console.log("searchedWorked4:"); ///////////////////
+    console.log(fighter.query);
+    const requestURL = BASE_URL + "api/mma/search/" + encodeURIComponent(fighter.query);
     const options = {
         method: 'GET',
         headers: {

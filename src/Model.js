@@ -37,6 +37,8 @@ export default {
 
     doSearch(searchParams){
       this.searchParams = searchParams;
+      console.log("searchedWorked3:");
+      console.log(searchParams);
       resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);
     }
 

@@ -13,6 +13,7 @@ function RankView(props){
     }
 
     function searchClickedHandlerACB(){
+        console.log("searchedWorked1")
         props.searchClicked();
     }
 

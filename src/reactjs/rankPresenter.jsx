@@ -1,11 +1,10 @@
 import RankView from "../views/rankView";
 import { observer } from "mobx-react-lite";
+import ShowresultView from "../views/showresultView";
 
 export default observer(
 
     function Rank(props){
-        const propsfighter = props.props.testfunction();
-        //console.log(propsfighter.promisResult);
     
         function changeTextInputACB(text){
             //Store new text in model
@@ -14,6 +13,7 @@ export default observer(
 
         function searchFighterACB(){
             //Retrieve the dishes that fulfill the criteria.
+            console.log("searchedWorked2")
             props.props.doSearch(props.props.searchParams);
         }
 
@@ -44,15 +44,16 @@ export default observer(
 
     //return <RankView fighterName={propsfighter}></RankView>
 
-    return (<div>
+    return (
+        <div>
         <RankView 
         text={props.props.setSearchQuery.query} 
         changeText={changeTextInputACB} 
         searchClicked={searchFighterACB}
+       
        />
-        
-        {promiseNoData(props.props.searchResultsPromiseState)||<RankView searchResults={props.props.searchResultsPromiseState.data} onDishClick={clickHandler} />}
-    </div>
+       {promiseNoData(props.props.searchResultsPromiseState)||<ShowresultView searchResults={props.props.searchResultsPromiseState.data} onDishClick={clickHandler} />}
+       </div>
     );
 
     }
