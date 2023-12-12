@@ -3,8 +3,20 @@ import React from 'react'
 
 export default (props) => {
 
+    function showFighter(fighter){
+        return(
+            <span key={fighter.entity.id}>
+                {console.log(fighter)}
+                <p>
+                    {fighter.entity.name}
+                </p>
+            </span>
+        )
+    }
+
+
 return(<div>
-    {console.log(props.searchResults.results)}
+    {props.searchResults.results.map(showFighter)}
 </div>
 
 
