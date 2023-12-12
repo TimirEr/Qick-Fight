@@ -12,7 +12,7 @@ function AboutView(props){
     function handleHomeACB(){
         window.location.hash="/";
     }
-
+ 
     return(
 <div className="about">
     <button onClick={handleHomeACB}>home</button>
