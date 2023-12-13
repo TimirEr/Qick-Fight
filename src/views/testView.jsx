@@ -5,6 +5,11 @@ import React from 'react'
 export default 
 function TestView(props){
 
+    function handleHomeACB(){
+        window.location.hash="/homeSearch";
+        return console.log("home");
+    }
+
     function handleAboutACB(){
         window.location.hash="/about";
         return console.log("about");
@@ -23,7 +28,7 @@ function TestView(props){
 
     return(<div className = "menu">
     <ul>
-        <li>Home</li>
+        <li onClick={handleHomeACB}>Home</li>
 	    <li onClick={handleRankACB}>CurrentRanking</li>
 	    <li onClick={handleCompareACB}>Compare</li>
         <li onClick={handleAboutACB}>About</li>

@@ -1,11 +1,15 @@
-import RankView from "../views/rankView";
+import HomeSearchView from "../views/homeSearchView";
 import { observer } from "mobx-react-lite";
-import ShowresultView from "../views/showresultView";
+import ShowFighter from "../views/showresultView";
+import AboutView from "../views/aboutView";
+
+
 
 export default observer(
 
-    function Rank(props){
-    
+    function HomeSearch(props){
+
+       
         function changeTextInputACB(text){
             //Store new text in model
             props.props.setSearchQuery(text);
@@ -13,13 +17,11 @@ export default observer(
 
         function searchFighterACB(){
             //Retrieve the dishes that fulfill the criteria.
-            console.log("searchedWorked2")
             props.props.doSearch(props.props.searchParams);
         }
 
         function clickHandler(dish){
             //Show dish details
-            console.log("dish clicked");
             props.model.setCurrentDish(dish.id);
         }
 
@@ -39,25 +41,24 @@ export default observer(
         }
         return <div>no data</div>;
     }
-    console.log(props);
-
-
-    //return <RankView fighterName={propsfighter}></RankView>
 
     return (
         <div>
-        <RankView 
+        <HomeSearchView 
         text={props.props.setSearchQuery.query} 
         changeText={changeTextInputACB} 
-        searchClicked={searchFighterACB}
+        searchClicked={searchFighterACB}/>
+
+
+
+        <div>
        
-       />
-       {promiseNoData(props.props.searchResultsPromiseState)||<ShowresultView searchResults={props.props.searchResultsPromiseState.data} onDishClick={clickHandler} />}
-       </div>
+      
+      
+       {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)||<ShowFighter searchResults={props.props.searchResultsPromiseState.data} onDishClick={clickHandler}  />  : <AboutView></AboutView>}
+      </div> 
+      </div>
     );
-
-    }
-
-
-
+        }
 )
+

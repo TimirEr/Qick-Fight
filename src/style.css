@@ -94,8 +94,6 @@
   font-family:fantasy;
 }
 
-
-
 .compare li {
   padding: 1rem 2rem 1.15rem;
   text-transform: uppercase;
@@ -107,7 +105,6 @@
 
 
 /* CSS for about*/
-
 
 .aboutUs{
   border-style: groove;
@@ -195,14 +192,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 @media only screen and (max-width: 768px) {
   ul {
     height: auto; 
@@ -224,8 +213,41 @@
 }
 
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+
+
+.homeMenu {
+  display: flex; /* Use Flexbox */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  width: 500px; /* Adjust to your desired width */
+  height: auto; /* Auto height to accommodate children */
+  border-style: groove;
+  border-radius: 20px;
+  margin: 0 auto; /* Center the .homeMenu itself in the viewport */
+  padding: 20px; /* Add some padding */
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Full width to center logo */
+  margin: 10px 0; /* Add some margin around the logo container */
+}
+
+.logo {
+  width: 100px; /* Adjust to your desired width */
+  height: auto; /* Maintain aspect ratio */
+  border-style: groove;
+  border-radius: 20px;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Full width to center searchBar */
+  padding: 20px; /* Add some padding */
+  text-align: center;
 }

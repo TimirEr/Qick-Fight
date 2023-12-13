@@ -1,9 +1,11 @@
 import "/src/style.css"
 import React from 'react'
 
-export default 
-function RankView(props){
 
+export default 
+function HomeSearchView(props){
+
+    
     function handleHomeACB(){
         window.location.hash="/";
     }
@@ -13,16 +15,23 @@ function RankView(props){
     }
 
     function searchClickedHandlerACB(){
-        console.log("searchedWorked1")
         props.searchClicked();
     }
 
-    console.log(props);
 
-    return(<div>
+
+    return(<div className="homeMenu">
+
+        <div className="logo-container">
+        <img src="src/assets/logo.png" alt="" className="logo"/>
+        </div>
+        
+        <div className="searchBar">
         <input value={props.text} onChange={textChangeHandlerACB}></input>   
         <button onClick={searchClickedHandlerACB}>Search!</button>
     </div>
-
-    )
+    </div>
+);
 }
+
+ 

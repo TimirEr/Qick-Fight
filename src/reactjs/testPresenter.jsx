@@ -5,4 +5,5 @@ export default observer(
     
     function Test(props){
     return <TestView></TestView>
-})
+}
+)

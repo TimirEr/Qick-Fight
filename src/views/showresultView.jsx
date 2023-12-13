@@ -16,11 +16,11 @@ export default (props) => {
 
 
 return(<div>
-    {props.searchResults.results.map(showFighter)}
-</div>
+    {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) : <p> No following fighter found!</p>}
+    </div>
 
 
-)
+);
 
 
 }
