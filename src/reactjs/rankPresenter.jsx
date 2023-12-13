@@ -13,13 +13,11 @@ export default observer(
 
         function searchFighterACB(){
             //Retrieve the dishes that fulfill the criteria.
-            console.log("searchedWorked2")
             props.props.doSearch(props.props.searchParams);
         }
 
         function clickHandler(dish){
             //Show dish details
-            console.log("dish clicked");
             props.model.setCurrentDish(dish.id);
         }
 
@@ -39,7 +37,6 @@ export default observer(
         }
         return <div>no data</div>;
     }
-    console.log(props);
 
 
     //return <RankView fighterName={propsfighter}></RankView>

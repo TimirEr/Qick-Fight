@@ -6,7 +6,6 @@ export default (props) => {
     function showFighter(fighter){
         return(
             <span key={fighter.entity.id}>
-                {console.log(fighter)}
                 <p>
                     {fighter.entity.name}
                 </p>
