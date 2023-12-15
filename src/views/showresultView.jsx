@@ -4,18 +4,59 @@ import React from 'react'
 export default (props) => {
 
     function showFighter(fighter){
-        return(
+        return (
             <span key={fighter.entity.id}>
-                <p>
-                    {fighter.entity.name}
-                </p>
+                <div className="fighterDetails">
+              <p>
+                <strong>Name:</strong> {fighter.entity.name}
+              </p>
+              <p>
+                <strong>Gender:</strong> {fighter.entity.gender}
+              </p>
+              <p>
+                <strong>Country:</strong> {fighter.entity.country.name}
+              </p>
+              <p>
+                <strong>Record:</strong> Wins: {fighter.entity.wdlRecord.wins} - Losses: {fighter.entity.wdlRecord.losses} - Draws: {fighter.entity.wdlRecord.draws}
+              </p>
+              </div>
+              <p>
+                <strong> Career Statistics</strong> 
+              </p>
+             
+              <p>
+                <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued?.strikes.total?.landed?.roundAvg}
+              </p>
+      
+              <p>
+                <strong>Significant Strikes Avg/ Round:</strong> {props.statsResults?.issued?.significantStrikes?.total?.landed?.roundAvg}
+              </p>
+               <p>
+                <> Head:</> {props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg} - Body {props.statsResults?.issued?.significantStrikes?.body?.landed?.roundAvg} - Legs {props.statsResults?.issued?.significantStrikes?.legs?.landed?.roundAvg}
+              </p>
+      
+              <p>
+                <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued.strikes?.total?.landed?.roundAvg}
+        </p>
+               
+               
+               
+               
+               {/*console.log(props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg)
+
+               <p>
+                <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg}
+              </p>*/}
+
+            
             </span>
-        )
-    }
+          );
+        }
 
 
 return(<div>
-    {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) : <p> No following fighter found!</p>}
+    {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) 
+    : <p> No following fighter found!</p>}
     </div>
 
 

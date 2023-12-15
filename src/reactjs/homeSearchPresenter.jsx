@@ -1,7 +1,7 @@
 import HomeSearchView from "../views/homeSearchView";
 import { observer } from "mobx-react-lite";
 import ShowFighter from "../views/showresultView";
-import AboutView from "../views/aboutView";
+import RankingView from "../views/rankingView";
 
 
 
@@ -55,7 +55,12 @@ export default observer(
        
       
       
-       {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)||<ShowFighter searchResults={props.props.searchResultsPromiseState.data} onDishClick={clickHandler}  />  : <AboutView></AboutView>}
+       {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)
+       ||<ShowFighter searchResults = {props.props.searchResultsPromiseState.data} 
+                      statsResults = {props.props.searchStatsPromiseState.data} 
+                      onDishClic = {clickHandler}/>  
+                      : <RankingView></RankingView>}
+      
       </div> 
       </div>
     );

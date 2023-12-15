@@ -251,3 +251,28 @@
   padding: 20px; /* Add some padding */
   text-align: center;
 }
+
+
+
+
+
+.rankingCSS {
+  display: flex; /* This will align children in a horizontal row */
+  justify-content: center;
+  text-align: center;
+}
+.class1{
+  border-style: groove;
+}
+.class2{
+  border-style: groove;
+}
+.class3{
+  border-style: groove;
+}
+.class4{
+  border-style: groove;
+}
+.class5{
+  border-style: groove;
+}
