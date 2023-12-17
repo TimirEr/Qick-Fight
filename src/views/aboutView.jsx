@@ -8,14 +8,9 @@ function AboutView(props){
     function jumpToEmailACB(email){
         window.location.href = `mailto:${email}`;
     }
-
-    function handleHomeACB(){
-        window.location.hash="/";
-    }
  
     return(
 <div className="about">
-    <button onClick={handleHomeACB}>home</button>
     <div className="aboutUs">
         <h1>About us</h1>
         <p>The Lion Does Not Turn Around When the Small Dog Barks</p>

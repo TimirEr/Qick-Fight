@@ -3,10 +3,15 @@ import React from 'react'
 
 export default (props) => {
 
+    function handleHomeACB(){
+        window.location.hash="/";
+        return console.log("home");
+    }
+
     function showFighter(fighter){
         return (
-            <span key={fighter.entity.id}>
-                <div className="fighterDetails">
+            <span key={fighter.entity.id}  className="fighterDetails">
+                <div>
               <p>
                 <strong>Name:</strong> {fighter.entity.name}
               </p>
@@ -48,8 +53,9 @@ export default (props) => {
                 <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg}
               </p>*/}
 
-            
+            <button onClick={handleHomeACB}>back</button>
             </span>
+            
           );
         }
 

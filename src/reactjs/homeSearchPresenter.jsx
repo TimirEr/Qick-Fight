@@ -2,6 +2,7 @@ import HomeSearchView from "../views/homeSearchView";
 import { observer } from "mobx-react-lite";
 import ShowFighter from "../views/showresultView";
 import RankingView from "../views/rankingView";
+import NavbarView from "../views/navBarView";
 
 
 
@@ -44,22 +45,21 @@ export default observer(
 
     return (
         <div>
+            <div>
+                <NavbarView></NavbarView>
+            </div>
+        <div>
         <HomeSearchView 
         text={props.props.setSearchQuery.query} 
         changeText={changeTextInputACB} 
         searchClicked={searchFighterACB}/>
-
-
-
+        </div> 
         <div>
-       
-      
       
        {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)
        ||<ShowFighter searchResults = {props.props.searchResultsPromiseState.data} 
                       statsResults = {props.props.searchStatsPromiseState.data} 
-                      onDishClic = {clickHandler}/>  
-                      : <RankingView></RankingView>}
+                      onDishClic = {clickHandler}/>  : <RankingView></RankingView>}
       
       </div> 
       </div>
