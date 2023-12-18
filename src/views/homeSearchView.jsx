@@ -33,8 +33,8 @@ function HomeSearchView(props){
         <div className="homeMenu_favo">
             <strong>Favorite:</strong><br />
             <div>{Model.currentFavoriteFighter} </div>
-            <button onClick={searchFavoriteACB}> test </button>
-            
+            <button onClick={searchFavoriteACB}> Update </button>
+
             
         </div>
     
