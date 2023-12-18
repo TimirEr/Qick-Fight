@@ -256,16 +256,16 @@ html, body, #root {
   grid-column: 1;
   width: 35%;
   border-style: groove;
+  text-align: center;
   
 }
 
 
 .homeMenu_search {
+  background-color: #2f3542;
   grid-row: 1;
   grid-column: 2;
   border-style: groove;
-  border-radius: 20px;
-  margin-top: 10px; /* Move towards the bottom by 2 cm */
   height: auto;
   width: 400px;
   justify-content: center;
