@@ -247,9 +247,13 @@ html, body, #root {
   grid-template-columns: 35% auto; /* Define two columns, first column is 35% of the container width, and the second column takes the remaining space */
   border-style: groove;
   border-width: 0.2cm;
+  background-color: rgb(70, 70, 71);
+
 }
 
 .homeMenu_favo{
+  background-color: #2f3542;
+  color: azure;
   display: flex;
   flex-direction: column;
   grid-row: 1;

@@ -7,7 +7,7 @@ export default observer(
     function Test(props){
     return (<div>
         <div>
-            {/*<NavbarView> </NavbarView>*/}
+            <NavbarView> </NavbarView>
         </div>
         <div>
             <TestView> </TestView>
