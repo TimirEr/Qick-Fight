@@ -3,7 +3,6 @@ import { getFighter, getFighterDetails, getFighterStats, getStats } from "./figh
 import resolvePromise from "./resolvePromise";
 
 
-
 export default {
     oflegends: "league",
     testing: "works",
@@ -15,6 +14,9 @@ export default {
     searchStatsPromiseState: {},
     currentFighterStatsPromiseState: {},
     currentFighterPromiseState: {},
+    currentFavoriteFighter: 'Yadong',
+    currentFavoriteFighterPromiseState: {},
+
 
 
   testfunction(props){
@@ -22,6 +24,23 @@ export default {
     .then(data => console.log(data))
     .catch(error => console.error(error)));
   },
+
+  setCurrentFavoriteFighter(fighterId) {
+
+    if (this.currentFavoriteFighter !== fighterId) {
+      this.currentFavoriteFighter = fighterId;
+      console.log('This fighter: ' + this.currentFavoriteFighter + ", is added to your favorite!");
+
+    //TODO, like fetching additional details or saving to a database
+  }
+},
+
+  getFavoriteFighter(){
+    console.log(this.currentFavoriteFighter)
+    return this.currentFavoriteFighter;
+  },
+
+
 
   setCurrentFighter(id) {
     if (this.currentFighter !== id) {

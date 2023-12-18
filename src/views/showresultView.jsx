@@ -1,11 +1,18 @@
 import "/src/style.css"
 import React from 'react'
+import Model from "../Model";
 
 export default (props) => {
 
     function handleHomeACB(){
         window.location.hash="/";
         return console.log("home");
+    }
+
+    function addFighterToFavoriteACB(fighter){
+      console.log(Model);
+      Model.setCurrentFavoriteFighter(fighter.entity.name);
+      console.log(Model);
     }
 
     function showFighter(fighter){
@@ -43,17 +50,10 @@ export default (props) => {
               <p>
                 <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued.strikes?.total?.landed?.roundAvg}
         </p>
-               
-               
-               
-               
-               {/*console.log(props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg)
-
-               <p>
-                <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg}
-              </p>*/}
-
-            <button onClick={handleHomeACB}>back</button>
+            <div className="result_button">
+              <button onClick={() => addFighterToFavoriteACB(fighter)} className="result_button1">Add to favorite</button>
+              <button onClick={handleHomeACB} className="result_button2">Back</button>
+            </div>
             </span>
             
           );

@@ -56,8 +56,18 @@ html, body, #root {
 
 
 @media (max-width: 768px) {
-  .menu_title {
-    font-size: 32px; 
+
+  .menu_title{
+    color: white;
+    font-size: 32px;
+    font-family: tahoma;
+  }
+
+  .menu_chant{
+    color: white;
+    font-size: 5px;
+    font-family: fantasy;
+    margin-bottom: 150px;
   }
   .menu_button{
     display: flex;
@@ -72,9 +82,19 @@ html, body, #root {
 }
 
 @media (max-width: 480px) {
-  .menu_title {
-    font-size: 24px; 
+
+  .menu_title{
+    color: white;
+    font-size: 24px;
+    font-family: tahoma;
   }
+  .menu_chant{
+    color: white;
+    font-size: 5px;
+    font-family: fantasy;
+    margin-bottom: 150px;
+  }
+
   .menu_button{
     display: flex;
     flex-direction: column; /* Stacks buttons vertically */
@@ -220,7 +240,26 @@ html, body, #root {
 
 
 /* CSS for home menu */
-.homeMenu {
+
+.homeMenu{
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  border-style: groove;
+  border-width: 0.2cm;
+}
+
+.homeMenu_favo{
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  border-style: groove;
+  padding: 10px; 
+}
+
+
+
+.homeMenu_search {
   display: flex; /* Use Flexbox */
   flex-direction: column; /* Stack children vertically */
   justify-content: center; /* Center vertically */
@@ -233,6 +272,8 @@ html, body, #root {
   padding: 20px; /* Add some padding */
   margin-top: 10px; /* Move towards the bottom by 2 cm */
 }
+
+
 
 
 
@@ -264,6 +305,26 @@ html, body, #root {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.result_button{
+
+}
+
+
+
+.result_button button {
+  margin: 15px; /* Adjust the value as needed */
+  font-size: 12px;
+  font-family: tahoma;
+}
+
+.result_button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(89, 255, 0, 0.24), 0 17px 50px 0 rgba(8, 158, 6, 0.19);
+}
+
+.result_button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 21, 255, 0.24), 0 17px 50px 0 rgba(7, 48, 233, 0.19);
 }
 
 

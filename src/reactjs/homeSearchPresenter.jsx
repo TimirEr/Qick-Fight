@@ -21,6 +21,12 @@ export default observer(
             props.props.doSearch(props.props.searchParams);
         }
 
+        function searchFavoriteFighterACB(){
+            console.log(props.props.currentFavoriteFighter);
+            return (props.props.currentFavoriteFighter);
+            //props.model.searchFavoriteFighter();
+        }
+
         function clickHandler(dish){
             //Show dish details
             props.model.setCurrentDish(dish.id);
@@ -52,14 +58,20 @@ export default observer(
         <HomeSearchView 
         text={props.props.setSearchQuery.query} 
         changeText={changeTextInputACB} 
-        searchClicked={searchFighterACB}/>
+        searchClicked={searchFighterACB}
+        searchFavoriteFighter = {searchFavoriteFighterACB}
+        favoriteFighter = {props.props.currentFavoriteFighter}
+        />
+        
         </div> 
         <div>
       
        {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)
        ||<ShowFighter searchResults = {props.props.searchResultsPromiseState.data} 
                       statsResults = {props.props.searchStatsPromiseState.data} 
-                      onDishClic = {clickHandler}/>  : <RankingView></RankingView>}
+                      onDishClic = {clickHandler}
+                      />  
+                      : <RankingView></RankingView>}
       
       </div> 
       </div>

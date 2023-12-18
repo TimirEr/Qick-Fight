@@ -1,5 +1,6 @@
 import "/src/style.css"
 import React from 'react'
+import Model from "../Model";
 
 
 export default 
@@ -18,10 +19,26 @@ function HomeSearchView(props){
         props.searchClicked();
     }
 
+    function searchFavoriteACB(){
+        props.searchFavoriteFighter();
+    }
+
+    function checkFavoriteACB(){
+        return props.searchFavoriteFighter;
+    }
+
 
 
     return(<div className="homeMenu">
-
+        <div className="homeMenu_favo">
+            <strong>Favorite:</strong><br />
+            <div>{Model.currentFavoriteFighter} </div>
+            <button onClick={searchFavoriteACB}> test </button>
+            
+            
+        </div>
+    
+    <div className="homeMenu_search">
         <div className="logo-container">
         <img src="src/assets/logo.png" alt="" className="logo"/>
         </div>
@@ -29,6 +46,7 @@ function HomeSearchView(props){
         <div className="searchBar">
         <input value={props.text} onChange={textChangeHandlerACB}></input>   
         <button onClick={searchClickedHandlerACB}>Search!</button>
+    </div>
     </div>
     </div>
 );
