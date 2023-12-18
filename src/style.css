@@ -241,36 +241,34 @@ html, body, #root {
 
 /* CSS for home menu */
 
+
 .homeMenu{
-  display: flex;
-  justify-content: flex-start; 
-  align-items: center;
+  display: grid;
+  grid-template-columns: 35% auto; /* Define two columns, first column is 35% of the container width, and the second column takes the remaining space */
   border-style: groove;
   border-width: 0.2cm;
 }
 
 .homeMenu_favo{
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  flex-direction: column;
+  grid-row: 1;
+  grid-column: 1;
+  width: 35%;
   border-style: groove;
-  padding: 10px; 
+  
 }
 
 
-
 .homeMenu_search {
-  display: flex; /* Use Flexbox */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  width: 500px; /* Adjust to your desired width */
-  height: auto; /* Auto height to accommodate children */
+  grid-row: 1;
+  grid-column: 2;
   border-style: groove;
   border-radius: 20px;
-  margin: 0 auto; /* Center the .homeMenu itself in the viewport */
-  padding: 20px; /* Add some padding */
   margin-top: 10px; /* Move towards the bottom by 2 cm */
+  height: auto;
+  width: 400px;
+  justify-content: center;
 }
 
 
@@ -307,9 +305,6 @@ html, body, #root {
   text-align: center;
 }
 
-.result_button{
-
-}
 
 
 

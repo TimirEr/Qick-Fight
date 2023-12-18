@@ -14,7 +14,7 @@ export default {
     searchStatsPromiseState: {},
     currentFighterStatsPromiseState: {},
     currentFighterPromiseState: {},
-    currentFavoriteFighter: 'Yadong',
+    currentFavoriteFighter: '---------',
     currentFavoriteFighterPromiseState: {},
 
 

@@ -10,7 +10,6 @@ export default (props) => {
     }
 
     function addFighterToFavoriteACB(fighter){
-      console.log(Model);
       Model.setCurrentFavoriteFighter(fighter.entity.name);
       console.log(Model);
     }
