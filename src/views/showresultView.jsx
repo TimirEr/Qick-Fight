@@ -1,6 +1,5 @@
 import "/src/style.css"
 import React from 'react'
-import Model from "../Model";
 
 export default (props) => {
 
@@ -10,11 +9,14 @@ export default (props) => {
     }
 
     function addFighterToFavoriteACB(fighter){
-      console.log(Model);
-      Model.setCurrentFavoriteFighter(fighter.entity.name);
+      props.setFavoriteFighter(fighter.entity.name);
     }
 
     function showFighter(fighter){
+
+        const imageUrl = props.imageResults;
+        console.log(fighter);
+
         return (
             <span key={fighter.entity.id}  className="fighterDetails">
                 <div>
@@ -68,6 +70,13 @@ export default (props) => {
               <>Submission Average/15 min</> {props.statsResults?.issued?.submissions?.total?.attempted?.avg15min}
             </p>
 
+        <div>
+            <img src={imageUrl} alt={`Image of ${fighter.entity.name}`} />
+        </div> 
+
+
+
+
              
             <div className="result_button">
               <button onClick={() => addFighterToFavoriteACB(fighter)} className="result_button1">Add to favorite</button>
@@ -80,11 +89,11 @@ export default (props) => {
 
 
 return(<div>
+    {console.log(props)}
     {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) 
     : <p> No following fighter found!</p>}
-    </div>
 
-
+  </div>
 );
 
 

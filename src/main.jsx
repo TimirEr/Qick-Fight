@@ -1,6 +1,9 @@
 
 
 /////  CODE FROM TW
+
+import "/src/firebaseModel.js";
+
 import model from "./Model.js";
 import {createRoot} from "react-dom/client";
 import ReactRoot from "./reactjs/ReactRoot.jsx";

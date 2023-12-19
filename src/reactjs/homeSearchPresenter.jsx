@@ -3,6 +3,10 @@ import { observer } from "mobx-react-lite";
 import ShowFighter from "../views/showresultView";
 import RankingView from "../views/rankingView";
 import NavbarView from "../views/navBarView";
+import LogIn from "../views/loginView";
+import signUp from "../views/signUpView";
+
+
 
 
 
@@ -21,15 +25,16 @@ export default observer(
             props.props.doSearch(props.props.searchParams);
         }
 
-        function searchFavoriteFighterACB(){
-            console.log(props.props.currentFavoriteFighter);
-            return (props.props.currentFavoriteFighter);
-            //props.model.searchFavoriteFighter();
-        }
+
 
         function clickHandler(dish){
             //Show dish details
             props.model.setCurrentDish(dish.id);
+        }
+
+        function setFavoriteFighterACB(fighter){
+            console.log(fighter);
+            props.props.setCurrentFavoriteFighter(fighter);
         }
 
     function promiseNoData(promiseState){
@@ -54,12 +59,12 @@ export default observer(
             <div>
                 <NavbarView></NavbarView>
             </div>
+        
         <div>
         <HomeSearchView 
         text={props.props.setSearchQuery.query} 
         changeText={changeTextInputACB} 
-        searchClicked={searchFighterACB}
-        searchFavoriteFighter = {searchFavoriteFighterACB}
+        searchClicked={searchFighterACB}        
         favoriteFighter = {props.props.currentFavoriteFighter}
         />
         
@@ -68,10 +73,15 @@ export default observer(
       
        {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)
        ||<ShowFighter searchResults = {props.props.searchResultsPromiseState.data} 
-                      statsResults = {props.props.searchStatsPromiseState.data} 
+                      statsResults = {props.props.searchStatsPromiseState.data}
+                      imageResults = {props.props.searchImagePromiseState.data}
+                      setFavoriteFighter = {setFavoriteFighterACB} 
                       onDishClic = {clickHandler}
-                      />  
-                      : <RankingView></RankingView>}
+                      />  : <LogIn></LogIn>
+
+
+                //      : <RankingView></RankingView>
+            }
       
       </div> 
       </div>

@@ -50,7 +50,46 @@ function getStats(id){
 function arrayToDataACB(resp) {
     return resp[0];
 }
-export {getFighter, getFighterDetails, getFighterStats, getStats}
+
+
+
+
+function getFighterImage(id){
+    const requestURL = BASE_URL + `api/mma/team/${id}/image`;
+    console.log("getFighterImage function called!"); 
+    
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': API_KEY,
+            'X-RapidAPI-Host': 'mmaapi.p.rapidapi.com'
+        }
+    };
+
+    return fetch(requestURL, options)
+        .then(retrieveFighterImageACB)
+        .then(convertImageACB)
+        .catch(error => console.log("Error fetching fighter details: ", error));
+}
+
+
+function retrieveFighterImageACB(resp){
+    if (!resp.ok) {
+        throw new Error("Resp error!");
+    }
+    return resp.blob(); // Handle image data as a blob
+}
+
+function convertImageACB(image){
+    const url = URL.createObjectURL(image);
+    return url;
+}
+
+
+
+
+
+export {getFighter, getFighterDetails, getFighterStats, getStats, getFighterImage}
 
 
 

@@ -1,5 +1,5 @@
 
-import { getFighter, getFighterDetails, getFighterStats, getStats } from "./fighterSource";
+import { getFighter, getFighterDetails, getFighterImage, getFighterStats, getStats } from "./fighterSource";
 import resolvePromise from "./resolvePromise";
 
 
@@ -12,11 +12,13 @@ export default {
     searchParams: {},
     searchResultsPromiseState: {},
     searchStatsPromiseState: {},
+    searchImagePromiseState: {},
+
+    currentFighterImagePromiseState: {},
     currentFighterStatsPromiseState: {},
     currentFighterPromiseState: {},
     currentFavoriteFighter: '---------',
     currentFavoriteFighterPromiseState: {},
-
 
 
   testfunction(props){
@@ -30,7 +32,6 @@ export default {
     if (this.currentFavoriteFighter !== fighterId) {
       this.currentFavoriteFighter = fighterId;
       console.log('This fighter: ' + this.currentFavoriteFighter + ", is added to your favorite!");
-
     //TODO, like fetching additional details or saving to a database
   }
 },
@@ -46,13 +47,24 @@ export default {
     if (this.currentFighter !== id) {
         this.currentFighter = id;
         resolvePromise(getFighterDetails(this.currentFighter), this.currentFighterPromiseState);
-        getFighterStats(id)
-        .then(stats => {
-            console.log("Fighter Stats:", stats);
-            // Do something with the stats
+        resolvePromise(getFighterStats(id), this.currentFighterStatsPromiseState);
+        resolvePromise(getFighterImage(id), this.currentFighterImagePromiseState);
+
+        /*
+      getFighterStats(id)
+      .then(stats => {
+          console.log("Fighter Stats:", stats);
         })
         .catch(error => console.error("Error fetching stats:", error));
-        //resolvePromise(getStats(this.currentFighter), this.currentFighterStatsPromiseState);
+
+
+      getFighterImage(id)
+      .then(image => {
+          console.log("Fighter Image:", image);
+      })
+      .catch(error => console.error("Error fetching image:", error));
+  
+*/
 
   }
 },
@@ -67,19 +79,17 @@ doSearch(searchParams) {
   console.log("searchedWorked3:");
   console.log(searchParams);
   
-  resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);
+  resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
 
-  getFighter(this.searchParams).then(value => {
-  resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);
-  }).catch("errors")
- 
-},
-
-
+    getFighter(this.searchParams).then(value => {
+    resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);
+    }).catch("errors");
   
-//FUNCTIONS
-
-
+    getFighter(this.searchParams).then(value => {
+      resolvePromise(getFighterImage(value.results[0].entity.id), this.searchImagePromiseState);
+      }).catch("errors");  
+      
+},
 
 
 };

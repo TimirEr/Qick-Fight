@@ -1,7 +1,5 @@
 import "/src/style.css"
 import React from 'react'
-import Model from "../Model";
-import { useState,useEffect } from "react";
 
 
 export default 
@@ -16,34 +14,11 @@ function HomeSearchView(props){
         props.searchClicked();
     }
 
-    function searchFavoriteACB(){
-        props.searchFavoriteFighter();
-    }
-
-    const [currentFavoriteFighter, setCurrentFavoriteFighter] = useState(Model.currentFavoriteFighter);
-
-
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            if (currentFavoriteFighter !== Model.currentFavoriteFighter) {
-                setCurrentFavoriteFighter(Model.currentFavoriteFighter);
-            }
-        }, 1000); // Polling every 1 second
-
-        return () => clearInterval(intervalId); // Cleanup on unmount
-    }, [currentFavoriteFighter]);
-
-
-
-
-
-
     return(<div className="homeMenu">
 
         <div className="homeMenu_favo">
             <strong>Favorite:</strong><br />
-            <div>{Model.currentFavoriteFighter}</div>
+            <div>{props.favoriteFighter}</div>
             <br/>            
         </div>
     
