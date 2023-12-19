@@ -120,6 +120,47 @@ html, body, #root {
   background-position: center; /* Center the background image */
 }
 
+.ranking_list{
+  display: grid;
+  grid-template-columns: 33% auto; /* Define two columns, first column is 35% of the container width, and the second column takes the remaining space */
+
+}
+
+
+
+.ranking_fighter1{
+  border-style: groove;
+  grid-row: 2;
+  grid-column: 1;
+  transition: box-shadow 0.3s ease;
+  box-shadow: none;
+}
+
+.ranking_fighter1:hover {
+  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
+}
+
+
+.ranking_fighter2{
+  border-style: groove;
+  grid-row: 2;
+  grid-column: 2;
+}
+.ranking_fighter2:hover {
+  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
+}
+
+.ranking_fighter3{
+  border-style: groove;
+  grid-row: 2;
+  grid-column: 3;
+}
+
+.ranking_fighter3:hover {
+  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
+}
+
+
 
 
 

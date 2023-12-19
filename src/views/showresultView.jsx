@@ -8,6 +8,7 @@ export default (props) => {
         return console.log("home");
     }
 
+
     function addFighterToFavoriteACB(fighter){
       props.setFavoriteFighter(fighter.entity.name);
     }
@@ -89,9 +90,11 @@ export default (props) => {
 
 
 return(<div>
-    {console.log(props)}
+    {console.log(props)
+    }
     {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) 
     : <p> No following fighter found!</p>}
+    {console.log(props.array1)}
 
   </div>
 );

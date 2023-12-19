@@ -1,5 +1,5 @@
 
-import { getFighter, getFighterDetails, getFighterImage, getFighterStats, getStats } from "./fighterSource";
+import { getFighter, getFighterDetails, getFighterImage, getFighterStats, getStats, } from "./fighterSource";
 import resolvePromise from "./resolvePromise";
 
 
@@ -10,15 +10,47 @@ export default {
 
     currentFighter: null,
     searchParams: {},
+
     searchResultsPromiseState: {},
     searchStatsPromiseState: {},
     searchImagePromiseState: {},
+
+  
+
+
 
     currentFighterImagePromiseState: {},
     currentFighterStatsPromiseState: {},
     currentFighterPromiseState: {},
     currentFavoriteFighter: '---------',
     currentFavoriteFighterPromiseState: {},
+
+    defaultFighters: ['islam makhachev' , 'jon jones', 'alex pereira'], 
+
+
+   /*     McGregor
+    searchRanking1PromiseState: {},
+    searchRanking2PromiseState: {},
+    searchRanking3PromiseState: {},
+
+        Yadong
+    searchRanking1PromiseState: {},
+    searchRanking2PromiseState: {},
+    searchRanking3PromiseState: {},
+
+        Jingliang
+    searchRanking1PromiseState: {},
+    searchRanking2PromiseState: {},
+    searchRanking3PromiseState: {},*/
+
+
+    array1: [{},{},{}],
+    array2: [{},{},{}],
+    array3: [{},{},{}],
+
+
+
+    hasSearched: false,
 
 
   testfunction(props){
@@ -40,6 +72,38 @@ export default {
     console.log(this.currentFavoriteFighter)
     return this.currentFavoriteFighter;
   },
+
+
+    getRanking(){
+      
+      this.setSearchQuery(this.defaultFighters[0])
+      this.doSearchForRanking(this.searchParams)
+
+      //this.array1[0] = this.searchResultsPromiseState;
+      //this.array1[1] = this.searchStatsPromiseState;
+      //this.array1[2] = this.searchImagePromiseState;
+
+      /*this.setSearchQuery(this.defaultFighters[1])
+      this.doSearch(this.searchParams)
+
+      this.array2[0] = this.searchResultsPromiseState;
+      this.array2[1] = this.searchStatsPromiseState;
+      this.array2[2] = this.searchImagePromiseState;
+
+      this.setSearchQuery(this.defaultFighters[2])
+      this.doSearch(this.searchParams)
+
+      this.array3[0] = this.searchResultsPromiseState;
+      this.array3[1] = this.searchStatsPromiseState;
+      this.array3[2] = this.searchImagePromiseState;
+
+
+      //this.doSearch(this.searchParams);
+      //this.array1[0] = this.searchResultsPromiseState;
+      //this.array1[1] = this.searchStatsPromiseState;
+      //this.array1[2] = this.searchImagePromiseState;*/
+    
+    },
 
 
 
@@ -89,6 +153,32 @@ doSearch(searchParams) {
       resolvePromise(getFighterImage(value.results[0].entity.id), this.searchImagePromiseState);
       }).catch("errors");  
       
+},
+
+
+
+
+doSearchForRanking(searchParams) {
+  
+  this.searchParams = searchParams;
+  console.log("searchedWorked3:");
+  console.log(searchParams);
+  
+ 
+  for (let i = 0; i < 3; i++) {
+    this.setSearchQuery(this.defaultFighters[i])
+
+  resolvePromise(getFighter(this.searchParams), this.array1[i]);  
+
+    getFighter(this.searchParams).then(value => {
+    resolvePromise(getFighterStats(value.results[0].entity.id), this.array2[i]);
+    }).catch("errors");
+  
+    getFighter(this.searchParams).then(value => {
+      resolvePromise(getFighterImage(value.results[0].entity.id), this.array3[i]);
+      }).catch("errors");  
+    
+    }
 },
 
 

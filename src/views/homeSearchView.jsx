@@ -32,6 +32,10 @@ function HomeSearchView(props){
         <input value={props.text} onChange={textChangeHandlerACB}></input>   
         <button onClick={searchClickedHandlerACB}>Search!</button>
         </div>
+        <div>
+            {//props.ranking()
+            }
+        </div>
         
         </div>
     </div>

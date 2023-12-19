@@ -7,10 +7,15 @@ function retrieveFighterJSONACB(resp) {
     }
     return resp.json();
 }
+
 function getFighter(fighter) {
+    if(fighter.query){
+        fighter = fighter.query;
+    }
+
     console.log("searchedWorked4:"); ///////////////////
-    console.log(fighter.query);
-    const requestURL = BASE_URL + "api/mma/search/" + encodeURIComponent(fighter.query);
+    console.log(fighter);
+    const requestURL = BASE_URL + "api/mma/search/" + encodeURIComponent(fighter);
     const options = {
         method: 'GET',
         headers: {
@@ -84,6 +89,8 @@ function convertImageACB(image){
     const url = URL.createObjectURL(image);
     return url;
 }
+
+
 
 
 
