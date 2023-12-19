@@ -1,4 +1,3 @@
-
 import { BASE_URL, API_KEY } from "./apiConfig";
 
 function retrieveFighterJSONACB(resp) {
@@ -7,6 +6,7 @@ function retrieveFighterJSONACB(resp) {
     }
     return resp.json();
 }
+
 function getFighter(fighter) {
     console.log("searchedWorked4:"); ///////////////////
     console.log(fighter.query);
@@ -21,6 +21,7 @@ function getFighter(fighter) {
     return fetch(requestURL, options)
         .then(retrieveFighterJSONACB);
 }
+
 function getFighterStats(id) {
     const requestURL = BASE_URL + `api/mma/team/${id}/career-statistics`;
     //const requestURL = BASE_URL + `api/mma/team/465171/career-statistics`;
@@ -43,7 +44,7 @@ function getFighterDetails(id) {
     return getFighter([id]).then(arrayToDataACB);
 }
 
-function getStats(id){
+function getStats(id) {
     return getFighterStats([id]).then(arrayToDataACB);
 }
 
@@ -54,10 +55,10 @@ function arrayToDataACB(resp) {
 
 
 
-function getFighterImage(id){
+function getFighterImage(id) {
     const requestURL = BASE_URL + `api/mma/team/${id}/image`;
-    console.log("getFighterImage function called!"); 
-    
+    console.log("getFighterImage function called!");
+
     const options = {
         method: 'GET',
         headers: {
@@ -73,14 +74,14 @@ function getFighterImage(id){
 }
 
 
-function retrieveFighterImageACB(resp){
+function retrieveFighterImageACB(resp) {
     if (!resp.ok) {
         throw new Error("Resp error!");
     }
     return resp.blob(); // Handle image data as a blob
 }
 
-function convertImageACB(image){
+function convertImageACB(image) {
     const url = URL.createObjectURL(image);
     return url;
 }
@@ -89,7 +90,7 @@ function convertImageACB(image){
 
 
 
-export {getFighter, getFighterDetails, getFighterStats, getStats, getFighterImage}
+export { getFighter, getFighterDetails, getFighterStats, getStats, getFighterImage }
 
 
 
