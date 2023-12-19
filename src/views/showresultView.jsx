@@ -9,12 +9,7 @@ export default (props) => {
     }
 
     function addFighterToFavoriteACB(fighter){
-<<<<<<< HEAD
       props.setFavoriteFighter(fighter.entity.name);
-=======
-      Model.setCurrentFavoriteFighter(fighter.entity.name);
-      console.log(Model);
->>>>>>> 84a29ced3c99b9b846490d7e6b41a1fa1b0d2745
     }
 
     function showFighter(fighter){
@@ -24,6 +19,7 @@ export default (props) => {
 
         return (
             <span key={fighter.entity.id}  className="fighterDetails">
+                <div>
               <p>
                 <strong>Name:</strong> {fighter.entity.name}
               </p>
@@ -36,7 +32,6 @@ export default (props) => {
               <p>
                 <strong>Record:</strong> Wins: {fighter.entity.wdlRecord.wins} - Losses: {fighter.entity.wdlRecord.losses} - Draws: {fighter.entity.wdlRecord.draws}
               </p>
-<<<<<<< HEAD
               </div><br />
               
               <p>
@@ -83,11 +78,9 @@ export default (props) => {
 
 
              
-=======
->>>>>>> 84a29ced3c99b9b846490d7e6b41a1fa1b0d2745
             <div className="result_button">
               <button onClick={() => addFighterToFavoriteACB(fighter)} className="result_button1">Add to favorite</button>
-              <button onClick={handleHomeACB} className="result_button2">compare</button>
+              <button onClick={handleHomeACB} className="result_button2">Back</button>
             </div>
             </span>
             
@@ -105,39 +98,3 @@ return(<div>
 
 
 }
-
-
-/*
-
-
-
- <p>
-                <strong> Career Statistics</strong> 
-              </p>
-             
-              <p>
-                <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued?.strikes.total?.landed?.roundAvg}
-              </p>
-      
-              <p>
-                <strong>Significant Strikes Avg/ Round:</strong> {props.statsResults?.issued?.significantStrikes?.total?.landed?.roundAvg}
-              </p>
-               <p>
-                <> Head:</> {props.statsResults?.issued?.significantStrikes?.head?.landed?.roundAvg} - Body {props.statsResults?.issued?.significantStrikes?.body?.landed?.roundAvg} - Legs {props.statsResults?.issued?.significantStrikes?.legs?.landed?.roundAvg}
-              </p>
-      
-              <p>
-                <strong>Strikes Landed/Round:</strong> {props.statsResults?.issued.strikes?.total?.landed?.roundAvg}
-        </p>
-
-
-
-
-
-
-
-
-
-
-
-*/ 
