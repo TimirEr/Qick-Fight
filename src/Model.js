@@ -25,7 +25,7 @@ export default {
     currentFavoriteFighter: '---------',
     currentFavoriteFighterPromiseState: {},
 
-    defaultFighters: ['islam makhachev' , 'jon jones', 'alex pereira'], 
+    defaultFighters: ['islam makhachev' , 'leon edwards', 'alexandre pantoja', 'jon jones','alex pereira','sean strickland'],
 
 
    /*     McGregor
@@ -44,9 +44,9 @@ export default {
     searchRanking3PromiseState: {},*/
 
 
-    array1: [{},{},{}],
-    array2: [{},{},{}],
-    array3: [{},{},{}],
+    array1: [{},{},{},{},{},{}],
+    array2: [{},{},{},{},{},{}],
+    array3: [{},{},{},{},{},{}],
 
 
 
@@ -76,7 +76,7 @@ export default {
 
     getRanking(){
       
-      this.setSearchQuery(this.defaultFighters[0])
+      this.setSearchQuery(this.defaultFighters)
       this.doSearchForRanking(this.searchParams)
 
       //this.array1[0] = this.searchResultsPromiseState;
@@ -140,10 +140,9 @@ setSearchQuery(queryText) {
 
 doSearch(searchParams) {
   this.searchParams = searchParams;
-  console.log("searchedWorked3:");
   console.log(searchParams);
-  
   resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
+
 
     getFighter(this.searchParams).then(value => {
     resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);
@@ -152,27 +151,25 @@ doSearch(searchParams) {
     getFighter(this.searchParams).then(value => {
       resolvePromise(getFighterImage(value.results[0].entity.id), this.searchImagePromiseState);
       }).catch("errors");  
-      
+    
 },
 
 
 
 
-doSearchForRanking(searchParams) {
+
+ doSearchForRanking(searchParams) {
   
   this.searchParams = searchParams;
-  console.log("searchedWorked3:");
-  console.log(searchParams);
-  
  
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 6; i++) {
     this.setSearchQuery(this.defaultFighters[i])
 
   resolvePromise(getFighter(this.searchParams), this.array1[i]);  
 
-    getFighter(this.searchParams).then(value => {
+    {/*getFighter(this.searchParams).then(value => {
     resolvePromise(getFighterStats(value.results[0].entity.id), this.array2[i]);
-    }).catch("errors");
+    }).catch("errors");*/}
   
     getFighter(this.searchParams).then(value => {
       resolvePromise(getFighterImage(value.results[0].entity.id), this.array3[i]);
@@ -180,6 +177,9 @@ doSearchForRanking(searchParams) {
     
     }
 },
+
+
+
 
 
 };

@@ -20,7 +20,7 @@ export default (props) => {
 
         return (
             <span key={fighter.entity.id}  className="fighterDetails">
-                <div>
+                <div className="fighterDetails_basic">
               <p>
                 <strong>Name:</strong> {fighter.entity.name}
               </p>
@@ -34,7 +34,7 @@ export default (props) => {
                 <strong>Record:</strong> Wins: {fighter.entity.wdlRecord.wins} - Losses: {fighter.entity.wdlRecord.losses} - Draws: {fighter.entity.wdlRecord.draws}
               </p>
               </div><br />
-              
+              <div className="fighterDetails_stats">
               <p>
                 <strong> Career Statistics</strong> 
               </p>
@@ -70,8 +70,9 @@ export default (props) => {
           <p>
               <>Submission Average/15 min</> {props.statsResults?.issued?.submissions?.total?.attempted?.avg15min}
             </p>
+          </div>
 
-        <div>
+        <div className="fighterDetails_image">
             <img src={imageUrl} alt={`Image of ${fighter.entity.name}`} />
         </div> 
 

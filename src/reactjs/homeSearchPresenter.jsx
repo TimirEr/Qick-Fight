@@ -22,10 +22,7 @@ export default observer(
             //props.props.getRanking();
         }
 
-        function searchFighterRankACB(fighter){
-            props.props.doSearchForRanking(fighter);
-        }
-
+       
        /* function getRankingACB(){
             props.props.setSearchQuery(props.props.defaultFighters[0]);
             console.log(props.props.searchParams)
@@ -39,16 +36,10 @@ export default observer(
 
         function getRankingACB(){
             props.props.getRanking();
-            //searchFighterACB();
-            //props.props.doSearch(props.props.searchParams);
-            console.log(props.props.array1[0])
-            console.log(props.props.array1[0]?.data)
-
         }
 
 
-        function clickHandler(dish){
-            //Show dish details
+        function clickHandlerACB(dish){
             props.model.setCurrentDish(dish.id);
         }
 
@@ -104,24 +95,36 @@ export default observer(
 
 
                       setFavoriteFighter = {setFavoriteFighterACB} 
-                      onDishClic = {clickHandler}
+                      onDishClic = {clickHandlerACB}
                       />   
-                      : <RankingView  //Todo PromiseNoData missing
-                        defaultFighters = {props.props.defaultFighters}   
-                        searchFighter = {searchFighterRankACB} 
+                      : <RankingView  
+                        defaultFighters = {props.props.defaultFighters}  
+                        ranking = {getRankingACB} 
                         array1_1 = {props.props.array1[0].data}
-                        array1_2 = {props.props.array2[0].data}
+                        //array1_2 = {props.props.array2[0].data}
                         array1_3 = {props.props.array3[0].data}
 
                         array2_1 = {props.props.array1[1].data}
-                        array2_2 = {props.props.array2[1].data}
+                        //array2_2 = {props.props.array2[1].data}
                         array2_3 = {props.props.array3[1].data}
 
                         array3_1 = {props.props.array1[2].data}
-                        array3_2 = {props.props.array2[2].data}
+                        //array3_2 = {props.props.array2[2].data}
                         array3_3 = {props.props.array3[2].data}
+                        
+                        array4_1 = {props.props.array1[3].data}
+                        //array4_2 = {props.props.array2[3].data}
+                        array4_3 = {props.props.array3[3].data}
 
-                        ranking = {getRankingACB}
+                        array5_1 = {props.props.array1[4].data}
+                        //array5_2 = {props.props.array2[4].data}
+                        array5_3 = {props.props.array3[4].data}
+
+                        array6_1 = {props.props.array1[5].data}
+                        //array6_2 = {props.props.array2[5].data}
+                        array6_3 = {props.props.array3[5].data}
+
+                        
                             />  
 
 

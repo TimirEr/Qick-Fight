@@ -120,77 +120,6 @@ html, body, #root {
   background-position: center; /* Center the background image */
 }
 
-.ranking_list{
-  display: grid;
-  grid-template-columns: 33.5% 33.5% 33%; /* Define two columns, first column is 35% of the container width, and the second column takes the remaining space */
-
-}
-
-
-
-.ranking_fighter1{
-  border-style: groove;
-  grid-row: 2;
-  grid-column: 1;
-  transition: box-shadow 0.3s ease;
-  box-shadow: none;
-}
-
-.ranking_fighter1:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
-}
-
-
-.ranking_fighter2{
-  border-style: groove;
-  grid-row: 2;
-  grid-column: 2;
-}
-.ranking_fighter2:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
-}
-
-.ranking_fighter3{
-  border-style: groove;
-  grid-row: 2;
-  grid-column: 3;
-}
-
-.ranking_fighter3:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
-}
-
-.ranking_fighter4{
-  border-style: groove;
-  grid-row: 3;
-  grid-column: 1;
-}
-
-.ranking_fighter4:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
-}
-
-.ranking_fighter5{
-  border-style: groove;
-  grid-row: 3;
-  grid-column: 2;
-}
-
-.ranking_fighter5:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
-}
-
-.ranking_fighter6{
-  border-style: groove;
-  grid-row: 3;
-  grid-column: 3;
-}
-
-.ranking_fighter6:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
-}
-
-
 
 
 
@@ -317,6 +246,8 @@ html, body, #root {
   grid-template-columns: 35% auto; /* Define two columns, first column is 35% of the container width, and the second column takes the remaining space */
   border-style: groove;
   border-width: 0.2cm;
+  background-color: rgb(70, 70, 71);
+
 }
 
 .homeMenu_favo{
@@ -343,6 +274,10 @@ html, body, #root {
   justify-content: center;
 }
 
+
+
+
+
 .logo-container {
   display: flex;
   justify-content: center; /* Center horizontally */
@@ -367,66 +302,17 @@ html, body, #root {
   text-align: center;
 }
 
-
-@media (max-width: 768px) {
-  .homeMenu {
-    grid-template-columns: 1fr; 
-  }
-
-  .homeMenu_favo, .homeMenu_search {
-    width: 100%;
-  }
-
-  .logo {
-    width: 50px; 
-  }
-
-  .searchBar {
-    padding: 5px;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-  }
-
-  .searchBar input, .searchBar button {
-    font-size: 12px; 
-    padding: 10px; 
-    width: 100%;
-    margin-bottom: 5px; 
-  }
-}
-
 .fighterDetails{
-  display: grid;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  grid-template-columns: 33% 33% 33%; /* Define two columns, first column is 35% of the container width, and the second column takes the remaining space */
-
 }
 
-.fighterDetails_basic{
-  border-style: groove;
-  grid-row: 1;
-  grid-column: 3;
-  justify-content: center;
-  align-items: center;
-}
-.fighterDetails_stats{
-  border-style: groove;
-  grid-row: 1;
-  grid-column: 2;
-  justify-content: center;
-  align-items: center;
-}
-.fighterDetails_image{
-  border-style: groove;
-  grid-row: 1;
-  grid-column: 1;
-  justify-content: center;
-  align-items: center;
-}
+
+
 
 .result_button button {
-  margin: 15px; 
+  margin: 15px; /* Adjust the value as needed */
   font-size: 12px;
   font-family: tahoma;
 }
@@ -482,7 +368,6 @@ html, body, #root {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   list-style-type: none; 
 }
-
 .navbar li {
   padding: 1rem 2rem 1.15rem;
   text-transform: uppercase;
