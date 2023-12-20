@@ -65,7 +65,7 @@ function AboutView(props){
                 <div className="person">
                     <h2>Ratimir Ernman</h2>
                     <p className="title">Developer</p>
-                    <p>It's Joever!</p>
+                    <p>Academic victim</p>
                     <p>ernman@kth.se</p>
                     <p><button onClick={() => jumpToEmailACB("ernman@kth.se")} className="button">Contact</button></p>
                 </div>
