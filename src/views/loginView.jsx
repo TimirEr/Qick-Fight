@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import { auth } from "../firebaseConfig.js";
-import { signInWithEmailAndPassword} from "firebase/auth";
-
+import { auth, provider } from "../firebaseConfig.js";
+import { signInWithPopup } from "firebase/auth";
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const whenToLogIn = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userInfo) => {
-        console.log(userInfo);
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        
+        setTheUser(user); 
       })
       .catch((error) => {
-        console.error(error); // Log the error
+        console.log("An error has occurred", error);
       });
   };
 
@@ -22,7 +23,8 @@ const LogIn = () => {
     <div className="logga in">
       <form onSubmit={whenToLogIn}>
         <h1>Log in!</h1>
-        <input
+        {/* Input fields for email and password are not needed for Google authentication */}
+        {/* <input
           type="email"
           placeholder="Please enter your email!"
           value={email}
@@ -33,8 +35,8 @@ const LogIn = () => {
           placeholder="Please enter password!"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Log in!</button>
+        /> */}
+        <button type="submit">Log in with Google</button>
       </form>
     </div>
   );
