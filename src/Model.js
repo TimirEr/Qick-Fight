@@ -26,6 +26,8 @@ export default {
     array2: [{},{},{},{},{},{}],
     array3: [{},{},{},{},{},{}],
 
+    array4: [{},{}],
+
   testfunction(props){
     return(getFighter("mcgregor")
     .then(data => console.log(data))
@@ -68,15 +70,15 @@ setSearchQuery(queryText) {
   this.searchParams.query = queryText;
 },
 
- doSearch(searchParams) {
+ doSearch1(searchParams) {
   this.searchParams = searchParams;
   console.log(searchParams);
   resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
 
     
     getFighter(this.searchParams).then(
-      value => {resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);
-    }).catch("errors");
+      value => {resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);   
+      }).catch("errors");
   
   
     getFighter(this.searchParams).then(value => {
@@ -85,6 +87,29 @@ setSearchQuery(queryText) {
     
 }, 
 
+doSearch(searchParams) {
+  this.searchParams = searchParams;
+  console.log(searchParams);
+  resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
+
+    
+    getFighter(this.searchParams).then(
+      value => {
+        this.array4 = new Array(value.results.length);
+        console.log(this.array4)
+        for(let i = 0; i < value.results.length; i++){
+        this.array4[i] = value.results[i]
+        resolvePromise(getFighterStats(value.results[i].entity.id), this.array4[i]);
+        console.log("LOOK HERE");
+      }
+      }).then(() => {console.log(this.array4[0])}).catch("errors");
+  
+  
+    getFighter(this.searchParams).then(value => {
+      resolvePromise(getFighterImage(value.results[0].entity.id), this.searchImagePromiseState);
+      }).catch("errors");  
+    
+}, 
 
 
 

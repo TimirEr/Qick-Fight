@@ -8,7 +8,6 @@ export default observer(
 
     function HomeSearch(props){
 
-        
 
        
         function changeTextInputACB(text){
@@ -83,10 +82,9 @@ export default observer(
 
 
        ||<ShowFighter searchResults = {props.props.searchResultsPromiseState.data} 
-                      statsResults = {props.props.searchStatsPromiseState.data}
+                      statsResults = {props.props.array4.data}
                       imageResults = {props.props.searchImagePromiseState.data}
-
-
+                      testResult = {props.props.array4}
                       setFavoriteFighter = {setFavoriteFighterACB} 
                       onDishClic = {clickHandlerACB}
                       />   

@@ -2,7 +2,8 @@ import "/src/style.css"
 import React from 'react'
 
 export default (props) => {
-
+  console.log("props");
+  console.log(props);
     function handleHomeACB(){
         window.location.hash="/";
         return console.log("home");
@@ -65,7 +66,7 @@ export default (props) => {
             <>Takedowns Defended/15 min: </> {props.statsResults?.received?.takedowns?.total?.defended?.avg15min} out of {props.statsResults?.received?.takedowns?.total?.attempted?.avg15min}
             </p>
 
-
+            
 
           <p>
               <>Submission Average/15 min</> {props.statsResults?.issued?.submissions?.total?.attempted?.avg15min}
