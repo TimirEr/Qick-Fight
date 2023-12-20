@@ -108,10 +108,13 @@ doSearch(searchParams) {
         console.log(this.array4)
         for(let i = 0; i < value.results.length; i++){
         this.array4[i] = value.results[i]
-        resolvePromise(getFighterStats(value.results[i].entity.id), this.array4[i]);
+        //resolvePromise(getFighterStats(value.results[i].entity.id), this.array4[i]);
+        resolvePromise(getFighterImage(value.results[i].entity.id), this.array4[i]);
         console.log("LOOK HERE");
       }
-      }).then(() => {console.log(this.array4[0])}).catch("errors");
+        }).then(() => {console.log(this.array4[0]);
+    
+        }).catch("errors");
   
   
     getFighter(this.searchParams).then(value => {
