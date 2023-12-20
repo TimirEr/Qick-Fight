@@ -11,7 +11,8 @@ const LogIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        setTheUser(user); // Assuming setTheUser is a function to set the user in your state
+        
+        setTheUser(user); 
       })
       .catch((error) => {
         console.log("An error has occurred", error);
