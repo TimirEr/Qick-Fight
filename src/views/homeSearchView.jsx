@@ -34,6 +34,10 @@ function HomeSearchView(props){
         </div>
         
         </div>
+
+    <div className="homeMenu_about">
+        
+    </div>
     </div>
 );
 }
