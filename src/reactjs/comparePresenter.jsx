@@ -4,10 +4,23 @@ import NavbarView from "../views/navBarView";
 
 export default observer(
     
-    function Compare(){
+    function Compare(props){
+
+        function handleLoginACB(){
+            console.log(props);
+            props.props.loginForGoogle();
+        }
+
+
+
     return (<div>
         <div>
-        <NavbarView></NavbarView>
+        <NavbarView 
+            user = {props.props.userState.user}
+            loginStatus = {props.props.userState.loginStatus}
+            setLoginStatus = {handleLoginACB}
+            
+        />
         </div>
         <div>
         <CompareView></CompareView>

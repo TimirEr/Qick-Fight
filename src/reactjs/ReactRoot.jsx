@@ -17,11 +17,11 @@ export default observer(
                 },
                 {
                     path: "/about",
-                    element: <About/>
+                    element: <About props = {props.model}/>
                 },
                 {
                     path: "/compare",
-                    element: <Compare/>
+                    element: <Compare props = {props.model}/>
                 },
                 {
                     path: "/homeSearch",

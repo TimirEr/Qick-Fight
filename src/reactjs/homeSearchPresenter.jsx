@@ -39,6 +39,11 @@ export default observer(
             props.props.setCurrentFavoriteFighter(fighter);
         }
 
+        function handleLoginACB(){
+            console.log(props);
+            props.props.loginForGoogle();
+        }
+
     function promiseNoData(promiseState){
         if(promiseState.promise){
             if (promiseState.data && !promiseState.error){
@@ -59,7 +64,12 @@ export default observer(
     return (
         <div>
             <div>
-                <NavbarView></NavbarView>
+            <NavbarView 
+            setLoginStatus = {handleLoginACB}
+            user = {props.props.userState.user}
+            loginStatus = {props.props.userState.loginStatus}
+        
+        />
             </div>
         
         <div>

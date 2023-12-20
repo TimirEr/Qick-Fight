@@ -1,7 +1,9 @@
-import {observable, reaction, configure} from "mobx";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, set, get , onValue} from "firebase/database";
 import firebaseConfig from "/src/firebaseConfig";
+import {reaction} from "mobx";
+import Model from "./Model";
+
 import {
     getAuth,
     signInWithPopup,
@@ -10,57 +12,164 @@ import {
     onAuthStateChanged,
     signOut,
   } from "firebase/auth";
-import {reactive, watch} from "react"; 
-//configure({ enforceActions: "never", });  // we don't use Mobx actions
 
-// Add relevant imports here 
 
-const PATH = "test2";
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getDatabase(app);
 
-set(ref(db,PATH + "/qf"), "YES");
+const PATH = "app";
 
-/*
 function modelToPersistence(model){
     return({
-        currentFavoriteFighter : model.Model.currentFavoriteFighter ? model.Model.currentFavoriteFighter : null
+        //favoriteFighter : model.currentFavoriteFighter,
+        //searchResultsPromiseState: model.searchResultsPromiseState ? model.searchResultsPromiseState : null,
+        favoriteFighter: model.favoriteFighter ? model.favoriteFighter : "",
+
     })
 }
 
+
+
 function persistenceToModel(data, model){
     if(!data){
-        model.Model.currentFavoriteFighter = null;
-        return Promise.resolve(model);
+
+      model.favoriteFighter = '---------';
+      return Promise.resolve(model);
+
     }
 
-function modelPromiseACB(promiseData){
-    model.Model.setCurrentFavoriteFighter(data.currentFavoriteFighter);
-    
-    model.ready = true;
-    return model;
-}
-function errorACB(error){
-    console.log(error);
-}
+    function modelPromiseACB(){
+        model.favoriteFighter = data.favoriteFighter ? data.favoriteFighter : '---------';
+        model.ready = true;
+        return model;
+    }
 
-return getFavoriteFighter(data.currentFavoriteFighter).then(modelPromiseACB).catch(errorACB);
+
+    modelPromiseACB();
 
 }
 
 
 function saveToFirebase(model){
+    if(model.userState.loginStatus && model.ready){
+        set(ref(db,PATH + "/" + model.userState.user.uid), modelToPersistence(model))
+    }
 }
+
+
+
+
+
+
 
 
 function readFromFirebase(model){
+    if(model.userState.loginStatus){
+        onValue(ref(db,PATH + "/" + model.userState.user.uid), updateACB)
+        model.ready = false;
 
-}
-function connectToFirebase(model, reactive){
+        return (
+            get(ref(db,PATH + "/" + model.userState.user.uid)).then(getDataACB).then(modelReadyACB)
+          );
+        
+        function getDataACB(snapshot){
+            return persistenceToModel(snapshot.val(), model);
+        }
 
+        function modelReadyACB(){
+            model.ready = true;
+        }
+
+        function updateACB(snapshot){
+            if(model.ready){
+                return persistenceToModel(snapshot.val(),model)
+            }
+        }
+    }
 }
+
+
+function connectToFirebase(model, watchFuction){
+   
+  readFromFirebase(model).then(modelCheckerACB)
+
+  function modelCheckerACB(){
+      watchFuction(checkModelDataACB,saveModelToFireBaseACB)
+  }
+    // watchFunction(checkModelDataACB,saveModelToFireBaseACB)
+  
+  
+  function checkModelDataACB(){
+      return [model.searchResultsPromiseState.promise, model.favoriteFighter]
+  }
+
+  function saveModelToFireBaseACB() {
+    saveToFirebase(model)
+  }
+}
+
+
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log ("Connecting To FB ")
+    connectToFirebase(Model, reaction)
+  } else {
+    console.log ("User logged out: ")
+    model.userState.user = null;
+    model.userState.loginStatus = false;
+    model.currentFavoriteFighter = '---------';
+  }
+});
+
+
+export function googleSignInOut (userState) {
+    if(userState.loginStatus) {
+      signOut(auth).then(() => {
+      }).catch((err) => {
+        console.error(err);
+      });
+    }
+
+    if(!userState.loginStatus) {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("Sign In User: ")
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        userState.user = user;
+        userState.loginStatus = true;
+    
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+    }
+
+
+
+      /*else{
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(() => {
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }*/
+  };
+
+
+
+
+
+
 
 
 export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase}
 
-export default connectToFirebase; */
+export default connectToFirebase; 

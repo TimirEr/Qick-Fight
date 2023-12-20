@@ -1,14 +1,27 @@
 
 import { observer } from "mobx-react-lite";
 import NavbarView from "../views/navBarView";
-import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
-import { auth, provider } from "../firebaseModel";
+
 
 
 export default observer(
 
     function NavbarPresenter(props){
-        return (<NavbarView />)
+
+
+        function handleLoginACB(){
+            console.log(props);
+            props.props.loginForGoogle();
+        }
+
+
+        return (<NavbarView  //Todo    "props.props = props.model"
+            user = {props.props.userState.user}
+            loginStatus = {props.props.userState.loginStatus}
+            setLoginStatus = {handleLoginACB}
+            
+        />
+        )
     }
 
 )

@@ -1,11 +1,15 @@
 
 import { getFighter, getFighterDetails, getFighterImage, getFighterStats, getStats, } from "./fighterSource";
 import resolvePromise from "./resolvePromise";
+import { googleSignInOut  } from "./firebaseModel";
+import connectToFirebase from "./firebaseModel";
 
 
 export default {
     oflegends: "league",
     testing: "works",
+
+    userState: {user: null, loginStatus: false},
 
     currentFighter: null,
     searchParams: {},
@@ -18,6 +22,7 @@ export default {
     currentFighterStatsPromiseState: {},
     currentFighterPromiseState: {},
     currentFavoriteFighter: '---------',
+    //currentFavoriteFighter: [],
     currentFavoriteFighterPromiseState: {},
 
     defaultFighters: ['islam makhachev' , 'leon edwards', 'alexandre pantoja', 'jon jones','alex pereira','sean strickland'],
@@ -32,6 +37,10 @@ export default {
     return(getFighter("mcgregor")
     .then(data => console.log(data))
     .catch(error => console.error(error)));
+  },
+
+  loginForGoogle(){
+    googleSignInOut(this.userState);
   },
 
   setCurrentFavoriteFighter(fighterId) {
