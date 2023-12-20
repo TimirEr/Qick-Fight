@@ -7,17 +7,12 @@ export default {
     oflegends: "league",
     testing: "works",
 
-
     currentFighter: null,
     searchParams: {},
 
     searchResultsPromiseState: {},
     searchStatsPromiseState: {},
     searchImagePromiseState: {},
-
-  
-
-
 
     currentFighterImagePromiseState: {},
     currentFighterStatsPromiseState: {},
@@ -27,31 +22,9 @@ export default {
 
     defaultFighters: ['islam makhachev' , 'leon edwards', 'alexandre pantoja', 'jon jones','alex pereira','sean strickland'],
 
-
-   /*     McGregor
-    searchRanking1PromiseState: {},
-    searchRanking2PromiseState: {},
-    searchRanking3PromiseState: {},
-
-        Yadong
-    searchRanking1PromiseState: {},
-    searchRanking2PromiseState: {},
-    searchRanking3PromiseState: {},
-
-        Jingliang
-    searchRanking1PromiseState: {},
-    searchRanking2PromiseState: {},
-    searchRanking3PromiseState: {},*/
-
-
     array1: [{},{},{},{},{},{}],
     array2: [{},{},{},{},{},{}],
     array3: [{},{},{},{},{},{}],
-
-
-
-    hasSearched: false,
-
 
   testfunction(props){
     return(getFighter("mcgregor")
@@ -74,36 +47,10 @@ export default {
   },
 
 
-    getRanking(){
-      
-      this.setSearchQuery(this.defaultFighters)
-      this.doSearchForRanking(this.searchParams)
-
-      //this.array1[0] = this.searchResultsPromiseState;
-      //this.array1[1] = this.searchStatsPromiseState;
-      //this.array1[2] = this.searchImagePromiseState;
-
-      /*this.setSearchQuery(this.defaultFighters[1])
-      this.doSearch(this.searchParams)
-
-      this.array2[0] = this.searchResultsPromiseState;
-      this.array2[1] = this.searchStatsPromiseState;
-      this.array2[2] = this.searchImagePromiseState;
-
-      this.setSearchQuery(this.defaultFighters[2])
-      this.doSearch(this.searchParams)
-
-      this.array3[0] = this.searchResultsPromiseState;
-      this.array3[1] = this.searchStatsPromiseState;
-      this.array3[2] = this.searchImagePromiseState;
-
-
-      //this.doSearch(this.searchParams);
-      //this.array1[0] = this.searchResultsPromiseState;
-      //this.array1[1] = this.searchStatsPromiseState;
-      //this.array1[2] = this.searchImagePromiseState;*/
-    
-    },
+  getRanking(){
+    //this.setSearchQuery(this.defaultFighters)
+    this.doSearchForRanking(this.searchParams)
+  },
 
 
 
@@ -114,22 +61,6 @@ export default {
         resolvePromise(getFighterStats(id), this.currentFighterStatsPromiseState);
         resolvePromise(getFighterImage(id), this.currentFighterImagePromiseState);
 
-        /*
-      getFighterStats(id)
-      .then(stats => {
-          console.log("Fighter Stats:", stats);
-        })
-        .catch(error => console.error("Error fetching stats:", error));
-
-
-      getFighterImage(id)
-      .then(image => {
-          console.log("Fighter Image:", image);
-      })
-      .catch(error => console.error("Error fetching image:", error));
-  
-*/
-
   }
 },
 
@@ -137,23 +68,22 @@ setSearchQuery(queryText) {
   this.searchParams.query = queryText;
 },
 
-
-doSearch(searchParams) {
+ doSearch(searchParams) {
   this.searchParams = searchParams;
   console.log(searchParams);
   resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
 
-
-    getFighter(this.searchParams).then(value => {
-    resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);
+    
+    getFighter(this.searchParams).then(
+      value => {resolvePromise(getFighterStats(value.results[0].entity.id), this.searchStatsPromiseState);
     }).catch("errors");
+  
   
     getFighter(this.searchParams).then(value => {
       resolvePromise(getFighterImage(value.results[0].entity.id), this.searchImagePromiseState);
       }).catch("errors");  
     
-},
-
+}, 
 
 
 

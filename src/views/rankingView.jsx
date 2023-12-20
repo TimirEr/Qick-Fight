@@ -12,12 +12,14 @@ function RankingView(props){
         //props.array1[0].data?.results[0]?.entity?.name
     }
 
+
     const imageUrl1 = props.array1_3?.length > 0 ? props.array1_3 : 'https://brfenergi.se/iprog/loading.gif'
     const imageUrl2 = props.array2_3?.length > 0 ? props.array2_3 : 'https://brfenergi.se/iprog/loading.gif'
     const imageUrl3 = props.array3_3?.length > 0 ? props.array3_3 : 'https://brfenergi.se/iprog/loading.gif'
     const imageUrl4 = props.array4_3?.length > 0 ? props.array4_3 : 'https://brfenergi.se/iprog/loading.gif'
     const imageUrl5 = props.array5_3?.length > 0 ? props.array5_3 : 'https://brfenergi.se/iprog/loading.gif'
     const imageUrl6 = props.array6_3?.length > 0 ? props.array6_3 : 'https://brfenergi.se/iprog/loading.gif'
+    
 
     return (<div className="ranking_list">
 

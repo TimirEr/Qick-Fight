@@ -22,20 +22,12 @@ export default observer(
             //props.props.getRanking();
         }
 
-       
-       /* function getRankingACB(){
-            props.props.setSearchQuery(props.props.defaultFighters[0]);
-            console.log(props.props.searchParams)
-            props.props.doSearch(props.props.searchParams)
-            props.props.array1[0] = props.props.searchResultsPromiseState
-            props.props.array1[1] = props.props.searchStatsPromiseState
-            props.props.array1[2] = props.props.searchImagePromiseState
-            console.log(props.props.array1)
-            console.log(props.props.searchResultsPromiseState)
-        }*/
-
         function getRankingACB(){
             props.props.getRanking();
+        }
+
+        function getImageACB(){
+            props.props.getImage();
         }
 
 
@@ -85,7 +77,8 @@ export default observer(
         </div> 
      {   <div>
       
-       {props.props.searchResultsPromiseState.data ? promiseNoData(props.props.searchResultsPromiseState)
+       {props.props.searchResultsPromiseState.data && props.props.searchParams != null ? promiseNoData(props.props.searchResultsPromiseState)
+       
 
 
 
@@ -123,23 +116,10 @@ export default observer(
                         array6_1 = {props.props.array1[5].data}
                         //array6_2 = {props.props.array2[5].data}
                         array6_3 = {props.props.array3[5].data}
-
-                        
                             />  
-
-
             }
       
         </div> }
-
-        {/*
-      <div>
-      <RankingView 
-                defaultFighters = {props.props.defaultFighters}   
-                searchFighter = {searchFighterRankACB} 
-                ranking = {getRankingACB}
-                />           
-    </div>*/}
       </div>
     );
         }

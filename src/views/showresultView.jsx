@@ -77,6 +77,9 @@ export default (props) => {
         </div> 
 
 
+        
+
+
 
 
              
@@ -90,12 +93,16 @@ export default (props) => {
         }
 
 
+
 return(<div>
     {console.log(props)
     }
     {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) 
     : <p> No following fighter found!</p>}
-    {console.log(props.array1)}
+
+
+
+
 
   </div>
 );
