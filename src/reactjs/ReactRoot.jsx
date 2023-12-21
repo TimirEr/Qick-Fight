@@ -9,7 +9,6 @@ export default observer(
     function ReactRoot(props){
 
         function makeRouter(){
-            {console.log(props.model)}
             return createHashRouter([
                 {
                     path: "/",

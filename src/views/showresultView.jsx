@@ -2,8 +2,6 @@ import "/src/style.css"
 import React from 'react'
 
 export default (props) => {
-  console.log("props");
-  console.log(props);
     function handleHomeACB(){
         window.location.hash="/";
         return console.log("home");
@@ -17,7 +15,6 @@ export default (props) => {
     function showFighter(fighter){
 
         const imageUrl = props.imageResults;
-        console.log(fighter);
 
         return (
             <span key={fighter.entity.id}  className="fighterDetails">
@@ -96,8 +93,7 @@ export default (props) => {
 
 
 return(<div>
-    {console.log(props)
-    }
+    
     {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) 
     : <p> No following fighter found!</p>}
 

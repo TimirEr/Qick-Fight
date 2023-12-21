@@ -9,10 +9,6 @@ export default observer(
     
     function About(props){
 
-      /*  function handleLoginACB(){
-            console.log(props);
-            props.props.handleGoogleLogin();
-        }*/
 
         function handleLoginACB(){
             console.log(props);

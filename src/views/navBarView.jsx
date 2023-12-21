@@ -18,13 +18,18 @@ function NavbarView(props){
         window.location.hash = "#/about";
     }
 
-    function handleLogInACB(event){
+    function handleLogInACB(){
       console.log(props);
         props.setLoginStatus();
     }
     
-    function handleLogOutACB(event){
+    function handleLogOutACB(){
         props.setLogoutStatus();
+    }
+
+    function testACB(){
+      console.log(props.user);
+      console.log(props.loginStatus);
     }
 
 
@@ -36,9 +41,12 @@ function NavbarView(props){
         <li onClick ={onClickSearchACB}>Search</li>
         <li onClick ={onClickCompareACB}>Compare</li>
         <li onClick ={onClickAbout}>About</li>
+
+        <button onClick={testACB}>   test   </button>
         
-        {(!props.loginStatus) ?  
-        (<li onClick={handleLogInACB}> Sign In </li>) 
+      {(props.user == null) ?  
+
+        (<li onClick={handleLogInACB}> Sign In </li> ) 
           : 
           (<> 
           <li><img src={props.user.photoURL} alt="Profile" className="google_image"/></li>

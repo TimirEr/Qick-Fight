@@ -38,7 +38,6 @@ export default observer(
         }
 
         function setFavoriteFighterACB(fighter){
-            console.log(fighter);
             props.props.setCurrentFavoriteFighter(fighter);
         }
 
@@ -55,6 +54,7 @@ export default observer(
               props.props.UserState.user = user;
               props.props.UserState.loginStatus = true;
               console.log("LogIn successfully");
+              console.log(props.pros.currentFavoriteFighter)
           
             }).catch((error) => {
 
@@ -67,6 +67,8 @@ export default observer(
                 props.props.UserState.loginStatus = false;
                 props.props.UserState.user = null;
                 console.log("LogOut successfully");
+                console.log(props.props.currentFavoriteFighter)
+
         
               }).catch((error) => {
                 console.error(error);

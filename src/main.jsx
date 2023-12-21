@@ -15,8 +15,6 @@ window.React= {createElement:createElement};
 import { observable, configure } from "mobx";
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const reactiveModel= observable(model);
-console.log(reactiveModel);
-
 
 createRoot(document.getElementById('root'))
     .render(<ReactRoot model={reactiveModel}/>);

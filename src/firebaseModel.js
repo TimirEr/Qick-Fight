@@ -13,6 +13,8 @@ import {
     signOut,
   } from "firebase/auth";
 
+import Model from "./Model";
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -20,13 +22,17 @@ const db = getDatabase(app);
 
 const PATH = "app";
 
+//const rf = ref(db,PATH);
+
 
 
 function modelToPersistence(model){
-    return({
+    console.log("checking modelToPersistence test!!!")
+    console.log(model.currentFavoriteFighter)
+  return({
         //favoriteFighter : model.currentFavoriteFighter,
         //searchResultsPromiseState: model.searchResultsPromiseState ? model.searchResultsPromiseState : null,
-        favoriteFighter: model.favoriteFighter ? model.favoriteFighter : "",
+        favoriteFighter: model.currentFavoriteFighter ? model.currentFavoriteFighter : "",
 
     })
 }
@@ -35,14 +41,14 @@ function modelToPersistence(model){
 
 function persistenceToModel(data, model){
     if(!data){
-
-      model.favoriteFighter = '---------';
+      model.currentFavoriteFighter = '---------';
       return Promise.resolve(model);
-
     }
 
     function modelPromiseACB(){
-        model.favoriteFighter = data.favoriteFighter ? data.favoriteFighter : '---------';
+      console.log("persistenceToModel: data" + data.favoriteFighter)
+        model.setCurrentFavoriteFighter(data.favoriteFighter);
+        //model.currentFavoriteFighter = data.favoriteFighter ? data.favoriteFighter : ""
         model.ready = true;
         return model;
     }
@@ -54,13 +60,10 @@ function persistenceToModel(data, model){
 
 function saveToFirebase(model){
     if(model.UserState.loginStatus && model.ready){
-        set(ref(db,PATH + "/" + model.UserState.user.uid), modelToPersistence(model))
+       // set(ref(db,PATH + "/" + model.UserState.user.uid), modelToPersistence(model))
+       set(ref(db,PATH + "/" + model.UserState.user.uid), modelToPersistence(model))
     }
 }
-
-
-
-
 
 
 
@@ -68,24 +71,6 @@ function saveToFirebase(model){
 function readFromFirebase(model){
     if(model.UserState.loginStatus){
         model.ready = false;
-
-
-        onAuthStateChanged(auth, (user) => {
-
-          console.log (user)
-
-          if (user) {
-            model.UserState.user = user;
-            model.UserState.loginStatus = true;
-            console.log ("Connecting To FB ")
-            connectToFirebase(model, reaction)
-          } else {
-            console.log ("User logged out: ")
-            model.UserState.user = null;
-            model.UserState.loginStatus = false;
-            model.currentFavoriteFighter = '---------';
-          }
-        });
     }
 
         return (
@@ -98,9 +83,48 @@ function readFromFirebase(model){
 
         function modelReadyACB(){
             model.ready = true;
-        }
-    
+        }   
 }
+
+
+
+
+
+
+const savedUserState = JSON.parse(localStorage.getItem('userState'));
+if (savedUserState) {
+    Model.UserState = savedUserState;
+}
+
+onAuthStateChanged(auth, (user) => {
+    console.log("checking user in authStateChanged");
+    console.log(user);
+
+    if (user) {
+        Model.UserState.user = user;
+        Model.UserState.loginStatus = true;
+        console.log("Connecting To FB");
+        console.log(Model.currentFavoriteFighter);
+        connectToFirebase(Model, reaction);
+
+        // Update and save the new state to local storage
+        localStorage.setItem('userState', JSON.stringify(Model.UserState));
+    } else {
+        console.log("User logged out: ");
+        Model.UserState.user = null;
+        Model.UserState.loginStatus = false;
+        Model.currentFavoriteFighter = 'testForLogOut';
+        console.log(Model.currentFavoriteFighter)
+
+
+        // Update and save the new state to local storage
+        localStorage.setItem('userState', JSON.stringify(Model.UserState));
+    }
+});
+
+
+
+
 
 
 function connectToFirebase(model, watchFuction){
@@ -108,22 +132,26 @@ function connectToFirebase(model, watchFuction){
   readFromFirebase(model).then(modelCheckerACB)
 
   function modelCheckerACB(){
-      watchFuction(checkModelDataACB,saveModelToFireBaseACB)
-  }
-    // watchFunction(checkModelDataACB,saveModelToFireBaseACB)
-  
+      watchFuction(checkModelDataACB,saveModelToFireBaseACB )
+  }  
   
   function checkModelDataACB(){
-      return [model.favoriteFighter]
+    console.log("CHECK FOR currentFavoriteFighter ");
+    console.log(model.currentFavoriteFighter)
+      return [model.currentFavoriteFighter];
   }
 
   function saveModelToFireBaseACB() {
-    saveToFirebase(model)
-  }
+    if(model.ready){
+        saveToFirebase(model)
+    }
 }
+}
+
+
 
 
 
 export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, auth}
 
-export default connectToFirebase; 
+export default connectToFirebase;

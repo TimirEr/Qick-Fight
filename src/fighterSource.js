@@ -13,8 +13,6 @@ function getFighter(fighter) {
         fighter = fighter.query;
     }
 
-    console.log("searchedWorked4:"); ///////////////////
-    console.log(fighter);
     const requestURL = BASE_URL + "api/mma/search/" + encodeURIComponent(fighter);
     const options = {
         method: 'GET',
@@ -30,7 +28,6 @@ function getFighterStats(id) {
     const requestURL = BASE_URL + `api/mma/team/${id}/career-statistics`;
     //const requestURL = BASE_URL + `api/mma/team/465171/career-statistics`;
 
-    console.log("searchedWorked99:"); ///////////////////
     const options = {
         method: 'GET',
         headers: {
