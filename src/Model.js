@@ -5,7 +5,7 @@ import resolvePromise from "./resolvePromise";
 
 export default {
 
-  
+
     oflegends: "league",
     testing: "works",
 

@@ -42,7 +42,6 @@ function NavbarView(props){
         <li onClick ={onClickCompareACB}>Compare</li>
         <li onClick ={onClickAbout}>About</li>
 
-        <button onClick={testACB}>   test   </button>
         
       {(props.user == null) ?  
 
