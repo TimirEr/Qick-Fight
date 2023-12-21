@@ -1,7 +1,7 @@
 
 import { getFighter, getFighterDetails, getFighterImage, getFighterStats, getStats, } from "./fighterSource";
 import resolvePromise from "./resolvePromise";
-import { googleSignInOut  } from "./firebaseModel";
+import { handleLoginStatus  } from "./firebaseModel";
 import connectToFirebase from "./firebaseModel";
 
 
@@ -39,9 +39,11 @@ export default {
     .catch(error => console.error(error)));
   },
 
-  loginForGoogle(){
-    googleSignInOut(this.userState);
+  handleGoogleLogin(){
+    handleLoginStatus(this.userState);
   },
+
+
 
   setCurrentFavoriteFighter(fighterId) {
 
@@ -55,6 +57,10 @@ export default {
   getFavoriteFighter(){
     console.log(this.currentFavoriteFighter)
     return this.currentFavoriteFighter;
+  },
+
+  resetFavoriteFighter(){
+    this.currentFavoriteFighter = '---------'
   },
 
 
@@ -108,13 +114,10 @@ doSearch(searchParams) {
         console.log(this.array4)
         for(let i = 0; i < value.results.length; i++){
         this.array4[i] = value.results[i]
-        //resolvePromise(getFighterStats(value.results[i].entity.id), this.array4[i]);
-        resolvePromise(getFighterImage(value.results[i].entity.id), this.array4[i]);
+        resolvePromise(getFighterStats(value.results[i].entity.id), this.array4[i]);
         console.log("LOOK HERE");
       }
-        }).then(() => {console.log(this.array4[0]);
-    
-        }).catch("errors");
+      }).then(() => {console.log(this.array4[0])}).catch("errors");
   
   
     getFighter(this.searchParams).then(value => {

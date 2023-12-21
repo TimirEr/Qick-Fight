@@ -16,6 +16,7 @@ export default (props) => {
 
     function showFighter(fighter){
 
+        const imageUrl = props.imageResults;
         console.log(fighter);
 
         return (
@@ -73,7 +74,7 @@ export default (props) => {
           </div>
 
         <div className="fighterDetails_image">
-            <img src={fighter.data} alt={`Image of ${fighter.entity.name}`} />
+            <img src={imageUrl} alt={`Image of ${fighter.entity.name}`} />
         </div> 
 
 
@@ -97,7 +98,7 @@ export default (props) => {
 return(<div>
     {console.log(props)
     }
-    {props.searchResults.results !== null ? props.testResult.map(showFighter) 
+    {props.searchResults.results !== null ? props.searchResults.results.map(showFighter) 
     : <p> No following fighter found!</p>}
 
 

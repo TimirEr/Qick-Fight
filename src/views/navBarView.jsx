@@ -17,14 +17,12 @@ function NavbarView(props){
         window.location.hash = "#/about";
     }
 
-    function handleLogInOutACB(event){
+    function handleLogInACB(event){
       console.log(props);
         props.setLoginStatus();
     }
 
-    function testACB(){
-      console.log(props.loginStatus)
-    }
+
 
     return(<div className="navbar">
       <ul>
@@ -32,39 +30,21 @@ function NavbarView(props){
         <li onClick ={onClickSearchACB}>Search</li>
         <li onClick ={onClickCompareACB}>Compare</li>
         <li onClick ={onClickAbout}>About</li>
+        
+        {(!props.loginStatus) ?  (<li onClick={handleLogInACB}> Sign In </li>) 
+          : (<> 
+          <li><img src={props.user.photoURL} alt="Profile" className="google_image"/></li>
+          <li> <h5> {props.user.displayName}, {props.user.email}</h5> </li>
+          <li onClick={handleLogInACB}> Logga ut</li>
+            </>
+          )
+          }
       </ul>
 
-      <ul>
-      <li>
-            <h3>Inloggning</h3>
-          </li>
-          {props.loginStatus ? (
-            <>
-              <li>
-                <p>
-                  Inloggad som: {props.user.displayName}, {props.user.email}
-                </p>
-              </li>
-              <li>
-                <img src={props.user.photoURL} alt="Profile" />
-              </li>
-              <li>
-                <button onClick={handleLogInOutACB}>
-                  <h5>Logga ut</h5>
-                </button>
-              </li>
-            </>
-          ) : (
-            <li>
-              <button onClick={handleLogInOutACB}>
-                <h5>Logga in med Google</h5>
-              </button>
-              <button onClick = {testACB}>
-                jonathan
-              </button>
-            </li>
-            )}
-      </ul>
+
+
+
+
     </div>
     );
 

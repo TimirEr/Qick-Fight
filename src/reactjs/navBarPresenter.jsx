@@ -18,8 +18,7 @@ export default observer(
         return (<NavbarView  //Todo    "props.props = props.model"
             user = {props.props.userState.user}
             loginStatus = {props.props.userState.loginStatus}
-            setLoginStatus = {handleLoginACB}
-            
+            setLoginStatus = {handleLoginACB}            
         />
         )
     }

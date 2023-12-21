@@ -8,7 +8,7 @@ export default observer(
 
         function handleLoginACB(){
             console.log(props);
-            props.props.loginForGoogle();
+            props.props.handleGoogleLogin();
         }
 
     return (<div>

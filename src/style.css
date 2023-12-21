@@ -331,6 +331,8 @@ html, body, #root {
 }
 
 
+
+
 .homeMenu_search {
   background-color: #2f3542;
   grid-row: 1;
@@ -502,6 +504,12 @@ html, body, #root {
 
 .navbar li:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+}
+
+.google_image{
+  border-style: groove;
+  width: 45px;
+  height: 45px;
 }
 
 @media (max-width: 768px) {

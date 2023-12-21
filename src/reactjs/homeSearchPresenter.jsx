@@ -41,7 +41,11 @@ export default observer(
 
         function handleLoginACB(){
             console.log(props);
-            props.props.loginForGoogle();
+            props.props.handleGoogleLogin();
+        }
+
+        function resetFavoriteFighterACB(){
+            props.props.resetFavoriteFighter();
         }
 
     function promiseNoData(promiseState){
@@ -78,6 +82,7 @@ export default observer(
         changeText={changeTextInputACB} 
         searchClicked={searchFighterACB}        
         favoriteFighter = {props.props.currentFavoriteFighter}
+        resetFavoriteFighter = {resetFavoriteFighterACB}
         //ranking = {getRankingACB}
 
         

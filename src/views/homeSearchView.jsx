@@ -14,11 +14,16 @@ function HomeSearchView(props){
         props.searchClicked();
     }
 
+    function resetFavoriteACB(){
+        props.resetFavoriteFighter();
+    }
+
     return(<div className="homeMenu">
 
         <div className="homeMenu_favo">
             <strong>Favorite:</strong><br />
             <div>{props.favoriteFighter}</div>
+            <button onClick={resetFavoriteACB}> Clear </button>
             <br/>            
         </div>
     

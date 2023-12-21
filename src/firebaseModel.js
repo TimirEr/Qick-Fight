@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get , onValue} from "firebase/database";
 import firebaseConfig from "/src/firebaseConfig";
 import {reaction} from "mobx";
-import Model from "./Model";
+
 
 import {
     getAuth,
@@ -113,21 +113,26 @@ function connectToFirebase(model, watchFuction){
   onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log ("Connecting To FB ")
-    connectToFirebase(Model, reaction)
+    //connectToFirebase(Model, reaction)
   } else {
     console.log ("User logged out: ")
-    model.userState.user = null;
-    model.userState.loginStatus = false;
-    model.currentFavoriteFighter = '---------';
+    //Model.userState.user = null;
+    //Model.userState.loginStatus = false;
+    //Model.currentFavoriteFighter = '---------';
   }
 });
 
 
-export function googleSignInOut (userState) {
+export function handleLoginStatus (userState) {
     if(userState.loginStatus) {
       signOut(auth).then(() => {
-      }).catch((err) => {
-        console.error(err);
+
+        userState.loginStatus = false;
+        userState.user = null;
+        console.log("LogOut successfully");
+
+      }).catch((error) => {
+        console.error(error);
       });
     }
 
@@ -141,6 +146,7 @@ export function googleSignInOut (userState) {
         const user = result.user;
         userState.user = user;
         userState.loginStatus = true;
+        console.log("LogIn successfully");
     
       }).catch((error) => {
         const errorCode = error.code;
@@ -150,17 +156,6 @@ export function googleSignInOut (userState) {
       });
     }
 
-
-
-      /*else{
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then(() => {
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    }*/
   };
 
 
