@@ -45,10 +45,7 @@ createRoot(document.getElementById('root'))
 
 
 
-    const savedUserState = JSON.parse(localStorage.getItem('userState'));
-    if (savedUserState) {
-        model.UserState = savedUserState;
-    }
+    
     
     onAuthStateChanged(auth, (user) => {
         console.log("checking user in authStateChanged");
@@ -63,8 +60,6 @@ createRoot(document.getElementById('root'))
             connectToFirebase(reactiveModel, reaction);
     
     
-            // Update and save the new state to local storage
-            localStorage.setItem('userState', JSON.stringify(reactiveModel.UserState));
         } else {
             console.log("User logged out: ");
             reactiveModel.UserState.user = null;
@@ -73,8 +68,6 @@ createRoot(document.getElementById('root'))
             console.log(reactiveModel.currentFavoriteFighter)
     
     
-            // Update and save the new state to local storage
-            localStorage.setItem('userState', JSON.stringify(reactiveModel.UserState));
         }
     });
 
