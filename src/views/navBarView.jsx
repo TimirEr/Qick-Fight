@@ -1,5 +1,6 @@
 import "/src/style.css"
 import React from 'react'
+import Model from "../Model";
 
 
 function NavbarView(props){
@@ -21,6 +22,11 @@ function NavbarView(props){
       console.log(props);
         props.setLoginStatus();
     }
+    
+    function handleLogOutACB(event){
+        props.setLogoutStatus();
+    }
+
 
 
 
@@ -31,14 +37,18 @@ function NavbarView(props){
         <li onClick ={onClickCompareACB}>Compare</li>
         <li onClick ={onClickAbout}>About</li>
         
-        {(!props.loginStatus) ?  (<li onClick={handleLogInACB}> Sign In </li>) 
-          : (<> 
+        {(!props.loginStatus) ?  
+        (<li onClick={handleLogInACB}> Sign In </li>) 
+          : 
+          (<> 
           <li><img src={props.user.photoURL} alt="Profile" className="google_image"/></li>
           <li> <h5> {props.user.displayName}, {props.user.email}</h5> </li>
-          <li onClick={handleLogInACB}> Logga ut</li>
+          <li onClick={handleLogOutACB}> Logga ut</li>
             </>
           )
-          }
+        }
+
+
       </ul>
 
 

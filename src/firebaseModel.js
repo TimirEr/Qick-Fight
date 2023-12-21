@@ -20,6 +20,8 @@ const db = getDatabase(app);
 
 const PATH = "app";
 
+
+
 function modelToPersistence(model){
     return({
         //favoriteFighter : model.currentFavoriteFighter,
@@ -45,15 +47,14 @@ function persistenceToModel(data, model){
         return model;
     }
 
-
     modelPromiseACB();
 
 }
 
 
 function saveToFirebase(model){
-    if(model.userState.loginStatus && model.ready){
-        set(ref(db,PATH + "/" + model.userState.user.uid), modelToPersistence(model))
+    if(model.UserState.loginStatus && model.ready){
+        set(ref(db,PATH + "/" + model.UserState.user.uid), modelToPersistence(model))
     }
 }
 
@@ -65,12 +66,30 @@ function saveToFirebase(model){
 
 
 function readFromFirebase(model){
-    if(model.userState.loginStatus){
-        onValue(ref(db,PATH + "/" + model.userState.user.uid), updateACB)
+    if(model.UserState.loginStatus){
         model.ready = false;
 
+
+        onAuthStateChanged(auth, (user) => {
+
+          console.log (user)
+
+          if (user) {
+            model.UserState.user = user;
+            model.UserState.loginStatus = true;
+            console.log ("Connecting To FB ")
+            connectToFirebase(model, reaction)
+          } else {
+            console.log ("User logged out: ")
+            model.UserState.user = null;
+            model.UserState.loginStatus = false;
+            model.currentFavoriteFighter = '---------';
+          }
+        });
+    }
+
         return (
-            get(ref(db,PATH + "/" + model.userState.user.uid)).then(getDataACB).then(modelReadyACB)
+            get(ref(db,PATH + "/" + model.UserState.user.uid)).then(getDataACB).then(modelReadyACB)
           );
         
         function getDataACB(snapshot){
@@ -80,13 +99,7 @@ function readFromFirebase(model){
         function modelReadyACB(){
             model.ready = true;
         }
-
-        function updateACB(snapshot){
-            if(model.ready){
-                return persistenceToModel(snapshot.val(),model)
-            }
-        }
-    }
+    
 }
 
 
@@ -101,7 +114,7 @@ function connectToFirebase(model, watchFuction){
   
   
   function checkModelDataACB(){
-      return [model.searchResultsPromiseState.promise, model.favoriteFighter]
+      return [model.favoriteFighter]
   }
 
   function saveModelToFireBaseACB() {
@@ -110,61 +123,7 @@ function connectToFirebase(model, watchFuction){
 }
 
 
-  onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log ("Connecting To FB ")
-    //connectToFirebase(Model, reaction)
-  } else {
-    console.log ("User logged out: ")
-    //Model.userState.user = null;
-    //Model.userState.loginStatus = false;
-    //Model.currentFavoriteFighter = '---------';
-  }
-});
 
-
-export function handleLoginStatus (userState) {
-    if(userState.loginStatus) {
-      signOut(auth).then(() => {
-
-        userState.loginStatus = false;
-        userState.user = null;
-        console.log("LogOut successfully");
-
-      }).catch((error) => {
-        console.error(error);
-      });
-    }
-
-    if(!userState.loginStatus) {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log("Sign In User: ")
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        userState.user = user;
-        userState.loginStatus = true;
-        console.log("LogIn successfully");
-    
-      }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-      });
-    }
-
-  };
-
-
-
-
-
-
-
-
-export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase}
+export {modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase, auth}
 
 export default connectToFirebase; 

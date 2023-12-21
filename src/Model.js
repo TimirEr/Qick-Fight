@@ -1,15 +1,13 @@
 
 import { getFighter, getFighterDetails, getFighterImage, getFighterStats, getStats, } from "./fighterSource";
 import resolvePromise from "./resolvePromise";
-import { handleLoginStatus  } from "./firebaseModel";
-import connectToFirebase from "./firebaseModel";
 
 
 export default {
     oflegends: "league",
     testing: "works",
 
-    userState: {user: null, loginStatus: false},
+    UserState: {user: null, loginStatus: false},
 
     currentFighter: null,
     searchParams: {},
@@ -39,10 +37,7 @@ export default {
     .catch(error => console.error(error)));
   },
 
-  handleGoogleLogin(){
-    handleLoginStatus(this.userState);
-  },
-
+  
 
 
   setCurrentFavoriteFighter(fighterId) {
