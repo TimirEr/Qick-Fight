@@ -199,112 +199,90 @@ html, body, #root {
 
 /* CSS for about*/
 
-.aboutUs{
+.about{
+  text-align: center;
+}
+.about_row{
+  display: grid;
+  grid-template-columns: 25% auto;
+}
+
+.about_per1{
   border-style: groove;
-  border-radius: 20vh;
-  background-color: black;
-  background-size: cover;
-  color: white;
-  font-family: 'Times New Roman', Times, serif;  
-  margin: 0;
-  text-align: center;
-  margin-top: 10px; /* Move towards the bottom by 2 cm */
+  grid-row: 1;
+  grid-column: 1;
 }
 
-.team{
-  text-align: center;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
-  align-items: center; 
-  max-width: 1200px; 
-  margin: 0 auto;
-}
-
-.column {
-  width: 23%; 
-  margin-bottom: 16px;
-  padding: 0 8px;
-  display: flex;
-  justify-content: center; 
-
-}
-
-
-.card {
-  text-align: center;
+.about_per2{
   border-style: groove;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-  width: 250px; /* Adjust the width as per your requirement */
-  height: auto; /* Allow height to adjust based on content */
-  transition: transform 0.3s ease; /* Adding transition for smooth effect */
+  grid-row: 1;
+  grid-column: 2;
 }
 
-.image{
-    width: 100%;
+.about_per3{
+  border-style: groove;
+  grid-row: 1;
+  grid-column: 3;
 }
 
-.container {
-  padding: 0 16px;
+.about_per4{
+  border-style: groove;
+  grid-row: 1;
+  grid-column: 4;
 }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  text-align: center;
-  cursor: pointer;
-  width: 24%;
-  transition: box-shadow 0.3s ease; 
-  box-shadow: none;
-
-}
-
-.card:hover{
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transform: scale(1.1); /* Increase the scale on hover (1.1 means 110% of the original size) */
-
-}
-
-.button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.about_image{
+  width: 200px;
+  height: 200px;
 }
 
 
-@media only screen and (max-width: 768px) {
-  ul {
-    height: auto; 
-    flex-direction: column; 
-    align-items: center; 
+
+@media (max-width: 768px) {
+  
+
+.about_row{
+  display: grid;
+  grid-template-columns: 50% auto;
+}
+
+.about_per1{
+  border-style: groove;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.about_per2{
+  border-style: groove;
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.about_per3{
+  border-style: groove;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.about_per3_image{
+  border-style: groove;
+  background-image: url(./assets/AlexBackground.jpg);
+  color: red;
+}
+
+.about_per4{
+  border-style: groove;
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.about_image{
+  width: 100px;
+  height: 100px;
+}
   }
-  li {
-    min-width: 50px; 
-    padding: 1rem 1.5rem 1.15rem; 
-  }
-}
 
 
-@media only screen and (max-width: 480px) {
-  li {
-    min-width: 40px; /* Adjust minimum width for mobile view */
-    padding: 1rem 1rem 1.15rem; /* Adjust padding for mobile view */
-  }
-}
 
 
 
