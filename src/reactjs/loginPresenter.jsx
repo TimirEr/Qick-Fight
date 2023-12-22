@@ -1,21 +1,32 @@
-import { observer } from "mobx-react-lite";
-import LoginView from "../views/loginView";
-import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
-import { auth, provider } from "../firebaseModel";
-import TestView from "../views/testView";
+import React, { useState } from "react";
+import { auth, provider } from "../firebaseConfig.js";
+import { signInWithPopup } from "firebase/auth";
 
-function LoginPresenter(props){
+const LogIn = () => {
+  const [user, setTheUser] = useState("");
 
-    return (<TestView onLogIn = {onLogIn} onLogOut = {onLogOut}/>)
+  const whenToLogIn = (e) => {
+    e.preventDefault();
 
-    function onLogIn(){
-        signInWithPopup(auth, provider)
-        console.log(auth.currentUser)
-    }
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        
+        setU(user); 
+      })
+      .catch((error) => {
+        console.log("An error has occurred", error);
+      });
+  };
 
-    function onLogOut(){
-        signOut(auth)
-    }
-}
+  return (
+    <div className="logga in">
+      <form onSubmit={whenToLogIn}>
+        <h1>Log in!</h1>
+        <button type="submit">Log in with Google</button>
+      </form>
+    </div>
+  );
+};
 
-export default observer(LoginPresenter);
+export default LogIn;
