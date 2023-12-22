@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { auth, provider } from "../firebaseConfig.js";
 import { signInWithPopup } from "firebase/auth";
 
+// google was used as a login method, saved in firebase
+
 const LogIn = () => {
   const [user, setTheUser] = useState("");
 
@@ -13,7 +15,6 @@ const LogIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        
         setU(user); 
       })
       .catch((error) => {
@@ -24,7 +25,7 @@ const LogIn = () => {
   return (
     <div className="logga in">
       <form onSubmit={whenToLogIn}>
-        <h1>Log in!</h1>
+        <h1>Log in</h1>
         <button type="submit">Log in with Google</button>
       </form>
     </div>
