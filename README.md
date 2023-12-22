@@ -13,7 +13,11 @@ SETUP:
 
 Short overview on how to setup the project if the hosting website is down. 
 First step is to clone the project and go through the npm install, install firebase and npm fund commands. Then there are two files that will be missing in the 
-repository, apiConfig.js and firebaseConfig in src/. These two files will need to be created and an acount that is subscribed to the API: https://rapidapi.com/fluis.lacasse/api/mmaapi/ will also need to be used to be able to authenticate all the API calls. The firebaseconfig file should also be added and should be structured like such:
+repository, apiConfig.js and firebaseConfig in src/. 
+
+These two files will need to be created and an acount that is subscribed to the API: https://rapidapi.com/fluis.lacasse/api/mmaapi/ will also need to be used to be able to authenticate all the API calls. 
+
+The firebaseconfig file should also be added, this is done to connect the to the firebase so when a user logs in uisng thier google account,  and should be structured like such:
 
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
