@@ -5,6 +5,8 @@ import { signInWithPopup } from "firebase/auth";
 const LogIn = () => {
   const [user, setTheUser] = useState("");
 
+
+  // checks when to login , this was not allowed to do in the view since the mvp model should be followed and no logic is allowed in the view only things that are relevant for the user
   const whenToLogIn = (e) => {
     e.preventDefault();
 
