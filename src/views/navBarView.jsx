@@ -55,17 +55,10 @@ function NavbarView(props){
           )
         }
 
-
       </ul>
-
-
-
-
-
     </div>
     );
 
-    
 }
 
 

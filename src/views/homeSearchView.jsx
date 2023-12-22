@@ -18,6 +18,10 @@ function HomeSearchView(props){
         props.resetFavoriteFighter();
     }
 
+    function resetACB(){
+        props.resetSearch();
+    }
+
     return(<div className="homeMenu">
 
         <div className="homeMenu_favo">
@@ -36,6 +40,7 @@ function HomeSearchView(props){
         <div className="searchBar">
         <input value={props.text} onChange={textChangeHandlerACB}></input>   
         <button onClick={searchClickedHandlerACB}>Search!</button>
+        <button onClick={resetACB}>Reset</button>
         </div>
         
         </div>

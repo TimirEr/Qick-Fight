@@ -19,8 +19,8 @@ function AboutView(props){
 
 <div className=" about_per1">
     <h4>Salahudin Salah</h4><br />
-    <div></div>
-    <img src="src/assets/salah.jpg" alt="salah" className="about_image"/>
+    <div className="about_per1_image"></div><br />
+    {/*<img src="src/assets/salah.jpg" alt="salah" className="about_image"/>*/}
     <p>Developer</p>
     <p>sasalah@kth.se</p><br />
     <p><button onClick={() => jumpToEmailACB("kazimov@kth.se")} >Contact</button></p>
@@ -28,7 +28,8 @@ function AboutView(props){
 
 <div className=" about_per2">
     <h4>Ali Kazimov</h4><br />
-    <img src="src/assets/aliK.jpg" alt="aliK" className="about_image"/>
+    <div className="about_per2_image"></div><br />
+    {/*<img src="src/assets/aliK.jpg" alt="aliK" className="about_image"/>*/}
     <p>Developer</p>
     <p>kazimov@kth.se</p><br />
     <p><button onClick={() => jumpToEmailACB("kazimov@kth.se")} >Contact</button></p>
@@ -37,10 +38,11 @@ function AboutView(props){
 </div>
 
 <div className=" about_per3">
-    {/*<div className="about_per3_image"> akskaksakks</div>*/}
     
     <h4>Ziang Wang</h4><br />
-    <img src="src/assets/ziangw.jpg" alt="ziangw" className="about_image"/>
+    <div className="about_per3_image"></div><br />
+
+    {/*<img src="src/assets/ziangw.jpg" alt="ziangw" className="about_image"/>*/}
     <p>Group Leader & Developer</p>
     <p>ziangw@kth.se</p><br />
     <p><button onClick={() => jumpToEmailACB("kazimov@kth.se")} >Contact</button></p>
@@ -49,7 +51,8 @@ function AboutView(props){
 
 <div className=" about_per4">
     <h4>Ratimir Ernman</h4><br />
-    <img src="src/assets/ratimir.jpg" alt="ratimir" className="about_image"/>
+    <div className="about_per4_image"></div><br />
+    {/*<img src="src/assets/ratimir.jpg" alt="ratimir" className="about_image"/>*/}
     <p>Co Leader & Developer</p>
     <p>ernman@kth.se</p><br />
     <p><button onClick={() => jumpToEmailACB("kazimov@kth.se")} >Contact</button></p>

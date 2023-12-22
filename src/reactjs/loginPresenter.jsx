@@ -5,7 +5,6 @@ import { auth, provider } from "../firebaseModel";
 import TestView from "../views/testView";
 
 function LoginPresenter(props){
-    //const provider = new GoogleAuthProvider();
 
     return (<TestView onLogIn = {onLogIn} onLogOut = {onLogOut}/>)
 

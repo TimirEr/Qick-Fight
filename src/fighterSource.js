@@ -26,8 +26,6 @@ function getFighter(fighter) {
 }
 function getFighterStats(id) {
     const requestURL = BASE_URL + `api/mma/team/${id}/career-statistics`;
-    //const requestURL = BASE_URL + `api/mma/team/465171/career-statistics`;
-
     const options = {
         method: 'GET',
         headers: {
@@ -79,7 +77,7 @@ function retrieveFighterImageACB(resp){
     if (!resp.ok) {
         throw new Error("Resp error!");
     }
-    return resp.blob(); // Handle image data as a blob
+    return resp.blob(); 
 }
 
 function convertImageACB(image){
@@ -100,4 +98,3 @@ export {getFighter, getFighterDetails, getFighterStats, getStats, getFighterImag
 
 
 
-/* test */

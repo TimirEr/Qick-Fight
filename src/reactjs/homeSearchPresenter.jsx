@@ -14,14 +14,15 @@ export default observer(
 
        
         function changeTextInputACB(text){
-            //Store new text in model
             props.props.setSearchQuery(text);
         }
 
+        function resetSearchACB(){
+            props.props.resetSearch();
+        }
+
         function searchFighterACB(){
-            //Retrieve the dishes that fulfill the criteria.
             props.props.doSearch(props.props.searchParams);
-            //props.props.getRanking();
         }
 
         function getRankingACB(){
@@ -80,22 +81,25 @@ export default observer(
             props.props.resetFavoriteFighter();
         }
 
-    function promiseNoData(promiseState){
-        if(promiseState.promise){
-            if (promiseState.data && !promiseState.error){
-                return false;
-            }
-
-            if(promiseState.error){
-                return <div>{promiseState.error}</div>
-            }
-
-            if(!promiseState.data && !promiseState.error){
-                return <img src={"https://brfenergi.se/iprog/loading.gif"} alt= "Loading"/>
-            }
+        function promiseNoData(promiseState){
+            console.log("PROMISESTATE:");
+            console.log(promiseState);
+            if(promiseState){
+                if (promiseState.data && !promiseState.error){
+                    console.log("IT WORKED");
+                    return false;
+                }
+    
+                if(promiseState.error){
+                    return <div>{promiseState.error}</div>
+                }
+    
+                if(!promiseState.data && !promiseState.error){
+                    return <img src={"https://brfenergi.se/iprog/loading.gif"} alt= "Loading"/>
+                }
+            }   
+            return <div>no data</div>;
         }
-        return <div>no data</div>;
-    }
 
     return (
         <div>
@@ -116,51 +120,42 @@ export default observer(
         searchClicked={searchFighterACB}        
         favoriteFighter = {props.props.currentFavoriteFighter}
         resetFavoriteFighter = {resetFavoriteFighterACB}
-        //ranking = {getRankingACB}
-
+        resetSearch = {resetSearchACB}
         
         />
         
         </div> 
      {   <div>
       
-       {props.props.searchResultsPromiseState.data && props.props.searchParams != null ? promiseNoData(props.props.searchResultsPromiseState)
+       {props.props.currentSearchPromise.data == true ? promiseNoData(props.props.currentSearchPromise)
        
 
 
 
-       ||<ShowFighter searchResults = {props.props.searchResultsPromiseState.data} 
-                      statsResults = {props.props.array4.data}
-                      imageResults = {props.props.searchImagePromiseState.data}
+       ||<ShowFighter 
                       testResult = {props.props.array4}
                       setFavoriteFighter = {setFavoriteFighterACB} 
                       onDishClic = {clickHandlerACB}
-                      />   
+                      />  
                       : <RankingView  
                         defaultFighters = {props.props.defaultFighters}  
                         ranking = {getRankingACB} 
                         array1_1 = {props.props.array1[0].data}
-                        //array1_2 = {props.props.array2[0].data}
                         array1_3 = {props.props.array3[0].data}
 
                         array2_1 = {props.props.array1[1].data}
-                        //array2_2 = {props.props.array2[1].data}
                         array2_3 = {props.props.array3[1].data}
 
                         array3_1 = {props.props.array1[2].data}
-                        //array3_2 = {props.props.array2[2].data}
                         array3_3 = {props.props.array3[2].data}
                         
                         array4_1 = {props.props.array1[3].data}
-                        //array4_2 = {props.props.array2[3].data}
                         array4_3 = {props.props.array3[3].data}
 
                         array5_1 = {props.props.array1[4].data}
-                        //array5_2 = {props.props.array2[4].data}
                         array5_3 = {props.props.array3[4].data}
 
                         array6_1 = {props.props.array1[5].data}
-                        //array6_2 = {props.props.array2[5].data}
                         array6_3 = {props.props.array3[5].data}
                             />  
             }
