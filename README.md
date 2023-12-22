@@ -17,7 +17,7 @@ repository, apiConfig.js and firebaseConfig in src/.
 
 These two files will need to be created and an acount that is subscribed to the API: https://rapidapi.com/fluis.lacasse/api/mmaapi/ will also need to be used to be able to authenticate all the API calls. 
 
-The firebaseconfig file should also be added, this is done to connect the to the firebase so when a user logs in uisng thier google account,  and should be structured like such:
+The firebaseconfig file should also be added, this is done to connect the to the firebase so when a user logs in uisng thier google account it is stored in the firebase.  The way it should be structured is as shown below:
 
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
