@@ -15,6 +15,7 @@ export default (props) => {
     function showFighter(fighter){
 
         const imageUrl = props.imageResults;
+        console.log(fighter);
 
         return (
             <span key={fighter.entity.id}  className="fighterDetails">
@@ -31,6 +32,14 @@ export default (props) => {
               <p>
                 <strong>Record:</strong> Wins: {fighter.entity.wdlRecord.wins} - Losses: {fighter.entity.wdlRecord.losses} - Draws: {fighter.entity.wdlRecord.draws}
               </p>
+              <p>
+                <strong>Ranking:</strong> {fighter.entity.ranking != 0 ? (fighter.entity.ranking != null ? fighter.entity.ranking : 'Unranked' ) : "Champion" }
+              </p>
+
+              <p>
+                <strong>Overall Score:</strong> {fighter.score}
+              </p>
+
               </div><br />
               <div className="fighterDetails_stats">
               <p>

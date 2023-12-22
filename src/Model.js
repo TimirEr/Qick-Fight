@@ -81,7 +81,7 @@ setSearchQuery(queryText) {
   this.searchParams.query = queryText;
 },
 
- doSearch1(searchParams) {
+ doSearch(searchParams) {
   this.searchParams = searchParams;
   resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
 
@@ -97,7 +97,10 @@ setSearchQuery(queryText) {
     
 }, 
 
-doSearch(searchParams) {
+
+
+/*
+doSearch1(searchParams) {
   this.searchParams = searchParams;
   resolvePromise(getFighter(this.searchParams), this.searchResultsPromiseState);  
 
@@ -116,7 +119,8 @@ doSearch(searchParams) {
       resolvePromise(getFighterImage(value.results[0].entity.id), this.searchImagePromiseState);
       }).catch("errors");  
     
-}, 
+}, */
+
 
 
 

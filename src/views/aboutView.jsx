@@ -19,6 +19,7 @@ function AboutView(props){
 
 <div className=" about_per1">
     <h4>Salahudin Salah</h4><br />
+    <div></div>
     <img src="src/assets/salah.jpg" alt="salah" className="about_image"/>
     <p>Developer</p>
     <p>sasalah@kth.se</p><br />
