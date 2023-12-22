@@ -9,6 +9,39 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+SETUP: 
+
+Short overview on how to setup the project if the hosting website is down. 
+First step is to clone the project and go through the npm install, install firebase and npm fund commands. Then there are two files that will be missing in the 
+repository, apiConfig.js and firebaseConfig in src/. These two files will need to be created and an acount that is subscribed to the API: https://rapidapi.com/fluis.lacasse/api/mmaapi/ will also need to be used to be able to authenticate all the API calls. The firebaseconfig file should also be added and should be structured like such:
+
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+
+const firebaseConfig = {
+
+     apiKey: "AIzaSyDlCmp149q7ZHTakem6Sg_lsyASUEpX4pQ",
+    authDomain: "quickfight.firebaseapp.com",
+    databaseURL: "https://quickfight-default-rtdb.europe-west1.firebasedatabase.app/",
+    projectId: "quickfight",
+    storageBucket: "quickfight.appspot.com",
+    messagingSenderId: "842757669436",
+    appId: "1:842757669436:web:c2b254d65225cf877d3939",
+    measurementId: "G-7G4CXRQ298"
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+export { app, auth, provider, firebaseConfig };
+
+
+
 Short description of your project:
 
 Our project will be a website where it is possible to look at stats from the UFC in different ways, such as looking at specific fighters, comparing fighters, and so on. 
