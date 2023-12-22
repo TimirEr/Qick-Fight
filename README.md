@@ -15,6 +15,12 @@ Short overview on how to setup the project if the hosting website is down.
 First step is to clone the project and go through the npm install, install firebase and npm fund commands. Then there are two files that will be missing in the 
 repository, apiConfig.js and firebaseConfig in src/. 
 
+The order to run the of the commands needed to run the project is : 
+1) npm install
+2) intsall firebase
+3) npm fund
+
+
 These two files will need to be created and an acount that is subscribed to the API: https://rapidapi.com/fluis.lacasse/api/mmaapi/ will also need to be used to be able to authenticate all the API calls. 
 
 The firebaseconfig file should also be added, this is done to connect the to the firebase so when a user logs in uisng thier google account it is stored in the firebase.  The way it should be structured is as shown below:
@@ -36,8 +42,6 @@ const firebaseConfig = {
     measurementId: "G-7G4CXRQ298"
 };
 
-
-
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
@@ -56,9 +60,10 @@ What you have done:
 
 We are done with the basic structure of the website and the basic outline of the code. We have set up a working react vite framework and designed a functional Model View Presenter codebase where we have made calls to our chosen API. We have also hosted the website via Firebase. 
 
-What you still plan to do:
+What you still plan to do: 
 
 There are still parts of the website missing, those views and presenters still need to be created. We need to show the user when data is loading, we need login functionality where we can store a user's favorated fighters, so that they have easy access to them. We also want a search functionality. 
+
 
 Your project file structure (short description/purpose of each file):
 
