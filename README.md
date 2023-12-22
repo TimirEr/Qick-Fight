@@ -22,15 +22,17 @@ The firebaseconfig file should also be added, this is done to connect the to the
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
+
+// this should be private
 const firebaseConfig = {
 
-     apiKey: "AIzaSyDlCmp149q7ZHTakem6Sg_lsyASUEpX4pQ",
-    authDomain: "quickfight.firebaseapp.com",
-    databaseURL: "https://quickfight-default-rtdb.europe-west1.firebasedatabase.app/",
-    projectId: "quickfight",
-    storageBucket: "quickfight.appspot.com",
-    messagingSenderId: "842757669436",
-    appId: "1:842757669436:web:c2b254d65225cf877d3939",
+    apiKey: DATA
+    authDomain: DATA
+    databaseURL: DATA
+    projectId: DATA
+    storageBucket: DATA
+    messagingSenderId: DATA
+    appId: DATA
     measurementId: "G-7G4CXRQ298"
 };
 
