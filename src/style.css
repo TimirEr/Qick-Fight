@@ -9,8 +9,6 @@ html, body, #root {
   padding: 0;
   box-sizing: border-box;
 }
-
-
 /* CSS for menu */
 .menu {
   width: 100%;
@@ -53,10 +51,7 @@ html, body, #root {
   box-shadow: 0 12px 16px 0 rgba(255, 0, 0, 0.24), 0 17px 50px 0 rgba(255, 0, 0, 0.19);
 }
 
-
-
 @media (max-width: 768px) {
-
   .menu_title{
     color: white;
     font-size: 32px;
@@ -147,7 +142,7 @@ html, body, #root {
   grid-column: 2;
 }
 .ranking_fighter2:hover {
-  box-shadow: 0 12px 16px 0 rgba(255, 0, 68, 0.24), 0 17px 50px 0 rgba(158, 6, 6, 0.19);
+  box-shadow: 0 13px 14px 0 rgba(255, 0, 68, 0.24), 0 16px 50px 0 rgba(158, 6, 6, 0.18);
 }
 
 .ranking_fighter3{
@@ -221,10 +216,7 @@ html, body, #root {
   grid-row: 1;
   grid-column: 3;
 }
-
-
 /* CSS for about*/
-
 .about{
   text-align: center;
   background-image: url(./assets/AlexBackground.jpg);
@@ -242,12 +234,10 @@ html, body, #root {
   justify-content: center;
   align-items: center;
 }
-
 .about_per1{
   grid-row: 1;
   grid-column: 1;
 }
-
 .about_per1_image{
   background-image: url(./assets/salah.jpg);
   width: 200px;
@@ -258,12 +248,10 @@ html, body, #root {
   grid-row: 1;
   grid-column: 1;
 }
-
 .about_per2{
   grid-row: 1;
   grid-column: 2;
 }
-
 .about_per2_image{
   background-image: url(./assets/aliK.jpg);
   width: 200px;
@@ -274,12 +262,10 @@ html, body, #root {
   grid-row: 1;
   grid-column: 2;
 }
-
 .about_per3{
   grid-row: 1;
   grid-column: 3;
 }
-
 .about_per3_image{
   background-image: url(./assets/ziangw.jpg);
   width: 200px;
@@ -290,7 +276,6 @@ html, body, #root {
   grid-row: 1;
   grid-column: 3;
 }
-
 .about_per4{
   grid-row: 1;
   grid-column: 4;
