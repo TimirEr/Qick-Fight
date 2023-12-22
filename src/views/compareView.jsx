@@ -21,3 +21,21 @@ function CompareView(props){
     function addFighterToFavoriteACB(fighter){
       props.setFavoriteFighter(fighter.entity.name);
     }
+return(<div className = "compare">
+        <div className="homeMenu_search">
+         <div className="logo-container">
+        <img src="src/assets/logo.png" alt="" className="logo" />
+        </div> 
+
+    <div className="searchBar">
+        <input value={props.text} onChange={textChangeHandlerACB}></input>
+        <button onClick={searchClickedHandlerACB}>Search</button>
+        <button onClick={resetClickedHandlerACB}>Reset</button>
+    </div>
+
+    
+</div>
+    </div>
+    );
+
+}
